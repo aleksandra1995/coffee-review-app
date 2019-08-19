@@ -12,8 +12,6 @@ function postEachShopOnDom(data) {
   divForEachShop.innerHTML += `<img src= "${data.img}"/>
   <h1>${data.name}</h1>`
   
-  // divForEachShop.innerHTML +=`${review.title}`
 
-  })
   bodyTag.append(divForEachShop)
 }
