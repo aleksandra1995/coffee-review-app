@@ -72,8 +72,15 @@ function postShopsOnDom(data) {
 }
 
 function postEachShopOnDom(data) {
+
   divForEachShop.innerHTML += `
   <h1 data-id="${data.id}">${data.name}</h1>`
+
+  const divForEachShop = document.createElement('div')
+  const bodyTag = document.getElementById('body')
+  divForEachShop.innerHTML += `<img src= "${data.img}"/>
+  <h1>${data.name}</h1>`
+  
   bodyTag.append(divForEachShop)
 
 }
