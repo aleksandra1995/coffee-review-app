@@ -46,7 +46,7 @@ function getReview(data) {
 
 function createNewReview(event) {
   event.preventDefault()
-  
+
 
 }
 
@@ -72,17 +72,21 @@ function postShopsOnDom(data) {
 }
 
 function postEachShopOnDom(data) {
-<<<<<<< HEAD
+
   divForEachShop.innerHTML += `
   <h1 data-id="${data.id}">${data.name}</h1>`
-=======
+
+
+  divForEachShop.innerHTML += `
+  <h1 data-id="${data.id}">${data.name}</h1>`
+
+
   const divForEachShop = document.createElement('div')
   const bodyTag = document.getElementById('body')
   divForEachShop.innerHTML += `<img src= "${data.img}"/>
   <h1>${data.name}</h1>`
-  
 
->>>>>>> a99194b9bbff707d72321d002e524ae2268ee510
+
   bodyTag.append(divForEachShop)
 
 }
