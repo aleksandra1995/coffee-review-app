@@ -1,15 +1,37 @@
-const divForEachShop = document.createElement('div')
 const bodyTag = document.getElementById('body')
 const divForPic = document.getElementById('div-for-pic')
 
-divForEachShop.addEventListener("click", directToInfoAboutShop)
+fetch('http://localhost:3000/shops')
+.then(resp => resp.json())
+.then(data => postShopsOnDom(data))
 
-function directToInfoAboutShop(event) {
+function postShopsOnDom(data) {
+  data.forEach(postOneShop)
+}
 
+function postOneShop(data) {
+  const divForEachShop = document.createElement('div')
+
+  divForEachShop.innerHTML += `<h1 data-id="${data.id}">${data.name}</h1>`
+  bodyTag.append(divForEachShop)
+
+  divForEachShop.addEventListener("click", shopClicked)
+
+}
+
+function shopClicked(event) {
   fetch(`http://localhost:3000/shops/${event.target.dataset.id}`)
   .then(resp => resp.json())
   .then(data => postIndInfoAboutShop(data))
+}
 
+function postIndInfoAboutShop(data) {
+console.log(data);
+  divForPic.innerHTML = `<img src="${data.img}"/>
+  `
+  fetch(`http://localhost:3000/shopreview/${data.id}`)
+  .then(resp => resp.json())
+  .then(data => getReview(data))
 
 
 }
@@ -17,7 +39,6 @@ function directToInfoAboutShop(event) {
 function getReview(data) {
   divForPic.innerHTML += `<form id="add-review" style="">
       <h3>Add a Review!</h3>
-
       <input type="text" name="title" value="" placeholder="Enter a title..." class="input-text">
       <br>
       <input type="number" name="rating" value="" placeholder="Enter a rating..." class="input-text">
@@ -43,50 +64,8 @@ function getReview(data) {
 
   })
 }
-
 function createNewReview(event) {
   event.preventDefault()
 
-
-}
-
-function postIndInfoAboutShop(data) {
-console.log(data);
-  divForPic.innerHTML = `<img src="${data.img}"/>
-  `
-  fetch(`http://localhost:3000/shopreview/${data.id}`)
-  .then(resp => resp.json())
-  .then(data => getReview(data))
-
-
-}
-
-
-
-fetch("http://localhost:3000/shops")
-.then(resp => resp.json())
-.then(data => postShopsOnDom(data))
-
-function postShopsOnDom(data) {
-  data.forEach(postEachShopOnDom)
-}
-
-function postEachShopOnDom(data) {
-
-  divForEachShop.innerHTML += `
-  <h1 data-id="${data.id}">${data.name}</h1>`
-
-
-  divForEachShop.innerHTML += `
-  <h1 data-id="${data.id}">${data.name}</h1>`
-
-
-  const divForEachShop = document.createElement('div')
-  const bodyTag = document.getElementById('body')
-  divForEachShop.innerHTML += `<img src= "${data.img}"/>
-  <h1>${data.name}</h1>`
-
-
-  bodyTag.append(divForEachShop)
 
 }
