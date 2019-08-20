@@ -2,6 +2,22 @@
 const addUserBtn = document.querySelector("#new-user-btn-and-prompt")
 const userForm = document.querySelector("#login-form")
 const addUserForm = document.querySelector(".add-user-form")
+let userId
+let username
+let addUser = false
+const usernameBar = document.querySelector(".username-bar")
+
+usernameBar.addEventListener('click', function (event) {
+
+  if (event.target.classList.contains('user')) {
+  const currentUserId = event.target.dataset.id
+
+  fetch(`http://localhost:3000/shopreview/${currentUserId}`)
+    .then(resp => resp.json())
+    .then(oneUserReviews => showUsersReviews(oneUserReviews))
+  }
+})
+
 
 function showUsersReviews(oneUserReviews) {
   oneUserReviews.forEach(function (review) {
@@ -67,7 +83,7 @@ function createNewUser(data) {
   console.log(usernameBar);
   usernameBar.innerHTML=`<p class="welcome-msg">Start leaving reviews, ${data.username}!</p>`
 
-  addUserBtn.style.display = 'none';
+  // addUserBtn.style.display = 'none';
   userForm.style.display = 'none';
   userId = data.id
   return userId;

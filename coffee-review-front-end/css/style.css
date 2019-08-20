@@ -67,6 +67,8 @@ header {
   text-align: center;
 }
 
+/******************** Shop list buttons ********************/
+
 .shop-button {
   font-size: 3em;
   margin: 1vh;
@@ -103,6 +105,8 @@ header {
   opacity: 1;
   right: 0;
 }
+
+/******************** Shop list buttons end ********************/
 
 .shop-img {
   max-width: 100%;
