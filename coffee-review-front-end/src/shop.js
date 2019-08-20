@@ -1,6 +1,6 @@
 const bodyTag = document.getElementById('body')
 const divForPic = document.getElementById('div-for-pic')
-const shopListSec = document.getElementById('shop-list-section')
+const shopListDiv = document.getElementById('shop-list-div')
 const divForNewReview = document.getElementById('div-for-new-review')
 
 fetch('http://localhost:3000/shops')
@@ -18,7 +18,8 @@ function postOneShop(data) {
   divForEachShop.classList.add("div-for-shop-list", "column", "row")
 
   divForEachShop.innerHTML += `<h1 data-id="${data.id}">${data.name}</h1>`
-  shopListSec.append(divForEachShop)
+  // append to shopListDiv insead of bodyTag
+  shopListDiv.append(divForEachShop)
   // bodyTag.append(divForEachShop)
 
   divForEachShop.addEventListener("click", shopClicked)
@@ -45,6 +46,7 @@ console.log(data);
 function getReview(data) {
   // Adding class for CSS
   // Changing from divForPic to divForNewReview
+  // divForNewReview.innerHTML appending multiple times
 
   divForPic.innerHTML += `<form id="add-review" class="column row" style="">
       <h3>Add a Review!</h3>
