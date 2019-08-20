@@ -1,0 +1,102 @@
+h1, h2, h3, p {
+  text-shadow: 1px 1px #ffffff
+}
+
+/************** Start header ****************/
+
+/* #header {
+  background-color: #7a5a00;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+} */
+
+.welcome-msg {
+  text-align: center;
+  font-size: 3em;
+}
+
+body {
+  margin: 0;
+  background-image: url("coffee beans background image.jpg");
+  background-attachment: fixed;
+  background-position: center;
+}
+
+#header {
+  background-color: #7a5a00;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  border: 0 0 1em 0;
+}
+
+#JAVA-logo {
+  width: 10%;
+  display: inline-block;
+  width: 5em;
+  height: auto;
+  align: left;
+  margin: 0;\
+}
+
+/********************* End header ****************/
+
+/********************* Start username-bar ************/
+.username-bar {
+  width: 100%;
+  margin-top: 5em;
+}
+
+.add-user-form {
+  text-align: center;
+}
+
+/******************* End username-bar ***********/
+
+#main {
+  margin-top: 5em;
+  display: flex;
+  width: 90vw;
+  height: 80vh;
+}
+
+#shop-list-section, #div-for-pic, #div-for-new-review {
+  background-color: yellow;
+  width: 30vw;
+  height: auto;
+  margin: 1em;
+}
+
+/* .column {
+  float: right;
+  width: 33.33%;
+} */
+
+
+/* #div-for-shop-list {
+  float: left;
+  width: 33.33%
+}
+
+#div-for-pic {
+  float: left;
+  width: 33.33%;
+} */
+
+/* #add-review {
+  float: right;
+  width: 33.33%;
+}
+
+/* Clearfix: Clear floats after the columns */
+/* .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}  */

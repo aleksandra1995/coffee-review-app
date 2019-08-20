@@ -4,35 +4,51 @@
     <meta charset="utf-8">
     <title>JAVA</title>
 
-    <link rel="stylesheet" href="style.css">
+
   </head>
 
+
 <body id="body">
-<div id="div-for-pic">
 
-
-</div>
-    <div id="header" style='text-align:center' ><h1>JAVA</h1></div>
-
-    <h3>Welcome to JAVA! Your one stop shop for coffee shops!</h3>
-    <div id="login-form">
-        <form class="add-user-form">
-            <h2>Create a new account by entering a username</h2>
-            <input type="text" name="username" placeholder="Enter a new username">
-            <br>
-            <input type="submit" name="submit" value="Start reviewing coffee shops!" >
-        </form>
+  <p id="header">
+    <img src="css/coffee logo.png" alt="Java logo" id="JAVA-logo">
+  </p>
+    <div class="username-bar">
+      <h3 class="welcome-msg">Welcome to JAVA! Your one stop shop for coffee shops!</h3>
+      <div id="login-form">
+          <form class="add-user-form">
+              <h2>Create a new account by entering a username</h2>
+              <input type="text" name="username" placeholder="Enter a new username">
+              <br>
+              <input type="submit" name="submit" value="Start reviewing coffee shops!">
+          </form>
+      <p style='text-align:center' id='new-user-btn-and-prompt'>Create a new user! <button >Add a new user!</button></p>
     </div>
-    <p style='text-align:center' id='new-user-btn-and-prompt'>Create a new user! <button >Add a new user!</button></p>
+  </div>
 
-    <div id="username-bar"></div>
+  <div id="main">
+
+    <section id="shop-list-section">
+
+    </section>
+
+    <div id="div-for-pic">
+    </div>
+
+    <!-- Div for new review form -->
+    <div id="div-for-new-review">
+
+    </div>
+
+
+  </div>
 
 
 </body>
-<script src="src/shop.js"></script>
-<script src="src/user.js"></script>
-<script src="src/review.js"></script>
 
 
 <script src="main.js"></script>
-
+<script src="src/user.js"></script>
+<script src="src/shop.js"></script>
+<script src="src/review.js"></script>
+<link rel="stylesheet" href="css/style.css">
