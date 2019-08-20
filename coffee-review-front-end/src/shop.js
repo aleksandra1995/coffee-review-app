@@ -20,7 +20,7 @@ function postShopsOnDom(shopsArray) {
 function postOneShop(eachShop) {
   const divForEachShop = document.createElement('div');
 
-  divForEachShop.innerHTML += `<h1 data-id="${eachShop.id}">${eachShop.name}</h1>`
+  divForEachShop.innerHTML += `<button data-id="${eachShop.id}" class="shop-button">${eachShop.name}</button>`
 
   // append to shopListDiv insead of bodyTag
   shopListDiv.append(divForEachShop)
@@ -74,6 +74,8 @@ function postIndInfoAboutShop(shopSelected) {
 
         if (rev.shop_id === shopSelected.id) {
             const pForComment = document.createElement('p')
+              // Adding class reivew-card
+              pForComment.classList.add("review-card")
               pForComment.innerHTML = `
               <h3>Title: ${rev.title}</h3>
               <h4>Rating: ${rev.rating}</h4>
@@ -107,20 +109,19 @@ function postIndInfoAboutShop(shopSelected) {
       }).then(resp => resp.json())
       .then(function (newReviewFromForm) {
         const ppForComment = document.createElement('p')
+          // Adding class reivew-card
+          ppForComment.classList.add("review-card")
           ppForComment.innerHTML = `
-          <h3>Title: ${newReviewFromForm.title}</h3>
-          <h4>Rating: ${newReviewFromForm.rating}</h4>
-          <ul>
-          <li>
-          ${newReviewFromForm.comment}
-          </li>
-          </ul>
+            <h3>Title: ${newReviewFromForm.title}</h3>
+            <h4>Rating: ${newReviewFromForm.rating}</h4>
+            <ul>
+            <li>
+            ${newReviewFromForm.comment}
+            </li>
+            </ul>
           `
       reviewsDiv.append(ppForComment)
       })
-
-
-
 
 
     }

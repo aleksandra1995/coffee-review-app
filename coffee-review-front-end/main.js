@@ -26,7 +26,7 @@ function showHomepage(username){
 function createNewUser(data) {
   const usernameBar = document.querySelector(".username-bar")
   console.log(usernameBar);
-  usernameBar.innerHTML=`<p>Start leaving reviews, ${data.username}!</p>`
+  usernameBar.innerHTML=`<p class="welcome-msg">Start leaving reviews, ${data.username}!</p>`
 
   addUserBtn.style.display = 'none';
   userForm.style.display = 'none';
