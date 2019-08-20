@@ -1,5 +1,5 @@
 h1, h2, h3, p {
-  text-shadow: 1px 1px #ffffff
+  text-shadow: 1px 1px #ffffff;
 }
 
 /************** Start header ****************/
@@ -67,36 +67,13 @@ header {
 }
 
 #shop-list-div, #div-for-pic, #div-for-new-review {
-  background-color: yellow;
+  background-color: #f5f5dc;
   width: 30vw;
   height: auto;
   margin: 1em;
 }
 
-/* .column {
-  float: right;
-  width: 33.33%;
-} */
-
-
-/* #div-for-shop-list {
-  float: left;
-  width: 33.33%
+.shop-img {
+  height: 50px;
+  width: auto;
 }
-
-#div-for-pic {
-  float: left;
-  width: 33.33%;
-} */
-
-/* #add-review {
-  float: right;
-  width: 33.33%;
-}
-
-/* Clearfix: Clear floats after the columns */
-/* .row:after {
-  content: "";
-  display: table;
-  clear: both;
-}  */

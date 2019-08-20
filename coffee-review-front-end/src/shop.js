@@ -3,79 +3,131 @@ const divForPic = document.getElementById('div-for-pic')
 const shopListDiv = document.getElementById('shop-list-div')
 const divForNewReview = document.getElementById('div-for-new-review')
 
-fetch('http://localhost:3000/shops')
-.then(resp => resp.json())
-.then(data => postShopsOnDom(data))
+userForm.addEventListener('submit', event => {
+  username = event.target.username.value
+})
 
-function postShopsOnDom(data) {
-  data.forEach(postOneShop)
+fetch('http://localhost:3000/shops')
+  .then(resp => resp.json())
+  .then(shopsArray => postShopsOnDom(shopsArray))
+
+
+function postShopsOnDom(shopsArray) {
+  shopsArray.forEach(postOneShop)
+
 }
 
-function postOneShop(data) {
-  const divForEachShop = document.createElement('div')
+function postOneShop(eachShop) {
+  const divForEachShop = document.createElement('div');
 
-  // Adding class to div for CSS
-  divForEachShop.classList.add("div-for-shop-list", "column", "row")
+  divForEachShop.innerHTML += `<h1 data-id="${eachShop.id}">${eachShop.name}</h1>`
 
-  divForEachShop.innerHTML += `<h1 data-id="${data.id}">${data.name}</h1>`
   // append to shopListDiv insead of bodyTag
-  shopListDiv.append(divForEachShop)
+  // shopListDiv.append(divForEachShop)
   // bodyTag.append(divForEachShop)
+  bodyTag.append(divForEachShop);
 
-  divForEachShop.addEventListener("click", shopClicked)
+
+    // Adding class to div for CSS
+    divForEachShop.classList.add("div-for-shop-list", "column", "row")
+
+    divForEachShop.addEventListener("click", shopClicked)
+
+
+  divForEachShop.addEventListener("click", shopClicked);
 
 }
 
 function shopClicked(event) {
-  fetch(`http://localhost:3000/shops/${event.target.dataset.id}`)
-  .then(resp => resp.json())
-  .then(data => postIndInfoAboutShop(data))
-}
-
-function postIndInfoAboutShop(data) {
-console.log(data);
-  divForPic.innerHTML = `<img src="${data.img}"/>
-  `
-  fetch(`http://localhost:3000/shopreview/${data.id}`)
-  .then(resp => resp.json())
-  .then(data => getReview(data))
-
-
-}
-
-function getReview(data) {
   // Adding class for CSS
   // Changing from divForPic to divForNewReview
   // divForNewReview.innerHTML appending multiple times
 
-  divForPic.innerHTML += `<form id="add-review" class="column row" style="">
-      <h3>Add a Review!</h3>
-      <input type="text" name="title" value="" placeholder="Enter a title..." class="input-text">
-      <br>
-      <input type="number" name="rating" value="" placeholder="Enter a rating..." class="input-text">
-      <br>
-      <input type="text" name="comment" value="" placeholder="Enter a comment..." class="input-text">
-      <br>
-      <input type="submit" name="submit" value="Create a New Review" class="submit">
-    </form>`
-    const formToAddReview = document.getElementById('add-review')
+  fetch(`http://localhost:3000/shops/${event.target.dataset.id}`)
+    .then(resp => resp.json())
+    .then(shopSelected => postIndInfoAboutShop(shopSelected));
+}
+
+function postIndInfoAboutShop(shopSelected) {
+
+  divForNewReview.innerHTML = `<img class="shop-img" src="${shopSelected.img}"/>`
+
+  fetch(`http://localhost:3000/reviews`)
+    .then(resp => resp.json())
+    .then(function getReview(reviewsData) {
+      divForPic.innerHTML =
+        `<form id="add-review" style="">
+          <h3>Add a Review!</h3>
+          <input type="text" name="title" value="" placeholder="Enter a title..." class="input-text">
+          <br>
+          <input type="number" name="rating" value="" placeholder="Enter a rating..." class="input-text">
+          <br>
+          <input type="text" name="comment" value="" placeholder="Enter a comment..." class="input-text">
+          <br>
+          <input type="submit" name="submit" value="Create a New Review" class="submit">
+        </form>`
+
+      const formToAddReview = document.getElementById('add-review')
         formToAddReview.addEventListener("submit", createNewReview)
-  data.forEach(function (rev) {
-    const pForComment = document.createElement('p')
-    pForComment.innerHTML = `
-    <h3>Title: ${rev.title}</h3>
-    <h4>Rating: ${rev.rating}</h4>
-    <ul>
-    <li>
-    ${rev.comment}
-    </li>
-    </ul>
-    `
-    divForPic.append(pForComment)
+
+        reviewsData.forEach(function (rev) {
+
+          if (rev.shop_id === shopSelected.id) {
+              const pForComment = document.createElement('p')
+                pForComment.innerHTML = `
+                <h3>Title: ${rev.title}</h3>
+                <h4>Rating: ${rev.rating}</h4>
+                <ul>
+                <li>
+                ${rev.comment}
+                </li>
+                </ul>
+                `
+            divForNewReview.append(pForComment)
+     }
+  })
+
+    function createNewReview(event) {
+      event.preventDefault()
+
+
+      fetch('http://localhost:3000/reviews',{
+        method: "POST",
+        headers: {
+          'Accept':'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          shop_id: shopSelected.id,
+          user_id: userId,
+          title: event.target.title.value,
+          rating: event.target.rating.value,
+          comment: event.target.comment.value
+        })
+      }).then(resp => resp.json())
+      .then(function (newReviewFromForm) {
+        const ppForComment = document.createElement('p')
+          ppForComment.innerHTML = `
+          <h3>Title: ${newReviewFromForm.title}</h3>
+          <h4>Rating: ${newReviewFromForm.rating}</h4>
+          <ul>
+          <li>
+          ${newReviewFromForm.comment}
+          </li>
+          </ul>
+          `
+      divForNewReview.append(ppForComment)
+      })
+
+
+
+
+
+    }
+
+
 
   })
-}
-function createNewReview(event) {
-  event.preventDefault()
+
 
 }
