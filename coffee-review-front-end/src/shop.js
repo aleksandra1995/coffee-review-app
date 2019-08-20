@@ -3,6 +3,8 @@ const reviewsDiv = document.getElementById('reviews-div')
 const shopListDiv = document.getElementById('shop-list-div')
 const divForNewReview = document.getElementById('div-for-new-review')
 
+console.log(userForm);
+
 userForm.addEventListener('submit', event => {
   username = event.target.username.value
 })
@@ -77,13 +79,13 @@ function postIndInfoAboutShop(shopSelected) {
               // Adding class reivew-card
               pForComment.classList.add("review-card")
               pForComment.innerHTML = `
-              <h3>Title: ${rev.title}</h3>
-              <h4>Rating: ${rev.rating}</h4>
-              <ul>
-              <li>
-              ${rev.comment}
-              </li>
-              </ul>
+                <h3>Title: ${rev.title}</h3>
+                <h4>Rating: ${rev.rating}</h4>
+                <ul>
+                <li>
+                ${rev.comment}
+                </li>
+                </ul>
               `
         reviewsDiv.append(pForComment)
      }
@@ -108,6 +110,7 @@ function postIndInfoAboutShop(shopSelected) {
         })
       }).then(resp => resp.json())
       .then(function (newReviewFromForm) {
+
         const ppForComment = document.createElement('p')
           // Adding class reivew-card
           ppForComment.classList.add("review-card")
@@ -121,6 +124,7 @@ function postIndInfoAboutShop(shopSelected) {
             </ul>
           `
       reviewsDiv.append(ppForComment)
+      event.target.reset()
       })
 
 
