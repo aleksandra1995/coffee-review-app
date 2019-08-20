@@ -3,6 +3,8 @@ const divForPic = document.getElementById('div-for-pic')
 const shopListDiv = document.getElementById('shop-list-div')
 const divForNewReview = document.getElementById('div-for-new-review')
 
+console.log(userForm);
+
 userForm.addEventListener('submit', event => {
   username = event.target.username.value
 })
@@ -71,8 +73,11 @@ function postIndInfoAboutShop(shopSelected) {
         formToAddReview.addEventListener("submit", createNewReview)
 
         reviewsData.forEach(function (rev) {
+        
 
           if (rev.shop_id === shopSelected.id) {
+
+
               const pForComment = document.createElement('p')
                 pForComment.innerHTML = `
                 <h3>Title: ${rev.title}</h3>
@@ -106,6 +111,7 @@ function postIndInfoAboutShop(shopSelected) {
         })
       }).then(resp => resp.json())
       .then(function (newReviewFromForm) {
+
         const ppForComment = document.createElement('p')
           ppForComment.innerHTML = `
           <h3>Title: ${newReviewFromForm.title}</h3>
@@ -114,6 +120,7 @@ function postIndInfoAboutShop(shopSelected) {
           <li>
           ${newReviewFromForm.comment}
           </li>
+
           </ul>
           `
       divForNewReview.append(ppForComment)

@@ -1,17 +1,20 @@
 class ShopsController < ApplicationController
 
-  before_action :set_shop, only: [:show, :update, :destroy]
+  before_action :set_shop, only: [:show, :update, :destroy, :showreview]
 
     # GET /shops
     def index
       @shops = Shop.all
 
-      render json: @shops
+      render json: @shops.map{|shop| {id: shop.id, img: shop.img, name: shop.name, location: shop.location, reviews: shop.reviews}}
     end
 
+    
     # GET /shops/1
     def show
+
       render json: @shop
+
     end
 
     # POST /shops

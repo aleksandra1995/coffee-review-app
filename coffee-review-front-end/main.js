@@ -1,58 +1,102 @@
 
-console.log('hello');
 const addUserBtn = document.querySelector("#new-user-btn-and-prompt")
 const userForm = document.querySelector("#login-form")
 const addUserForm = document.querySelector(".add-user-form")
-addUserForm.style.display = 'none'
+// addUserForm.style.display = 'none'
+let userId
 let username
 let addUser = false
+const usernameBar = document.querySelector(".username-bar")
 
-console.log(userForm);
+usernameBar.addEventListener('click', function (event) {
 
-addUserBtn.addEventListener('click', () => {
-    // hide & seek with the form
-    addUser = !addUser
-    if (addUser) {
-        addUserForm.style.display = 'block'
-    } else {
-        addUserForm.style.display = 'none'
-    }
+  if (event.target.classList.contains('user')) {
+  const currentUserId = event.target.dataset.id
+
+  fetch(`http://localhost:3000/shopreview/${currentUserId}`)
+    .then(resp => resp.json())
+    .then(oneUserReviews => showUsersReviews(oneUserReviews))
+  }
 })
+
+function showUsersReviews(oneUserReviews) {
+  oneUserReviews.forEach(function (review) {
+    console.log(review.comment);
+  })
+}
+
 
 function showHomepage(username){
 
-  fetch(`http://localhost:3000/users`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      username: username
-    })
-  }).then(resp => resp.json())
-  .then(data =>  createNewUser(data))
+  let userExists = false
+
+  fetch('http://localhost:3000/users')
+    .then(resp => resp.json())
+    .then(function (userToFind ) {
+        // console.log(username);
+        userToFind.find(function(user) {
+          // console.log(user);
+
+          if (user.username === username){
+            // console.log("Lawson was found")
+            userExists = true
+            userId = user.id
+
+          }
+           else {
+             // console.log("Make a new user")
+         }
+      })
+
+      if (userExists){
+        console.log("Lawson was found")
+        console.log(username);
+        console.log(userId);
+        usernameBar.innerHTML=`<p data-id="${userId}" class="user">Start leaving reviews, ${username}!</p>`
+
+
+      } else {
+        fetch(`http://localhost:3000/users`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            username: username
+          })
+        }).then(resp => resp.json())
+        .then(data =>  createNewUser(data))
+        console.log("Make a new user")
+      }
+
+      })
+
+
 
 }
 
 
 
 function createNewUser(data) {
-  const usernameBar = document.querySelector(".username-bar")
-  console.log(usernameBar);
+
+
+
+
   usernameBar.innerHTML=`<p>Start leaving reviews, ${data.username}!</p>`
 
   addUserBtn.style.display = 'none';
   userForm.style.display = 'none';
   userId = data.id
   return userId;
-}
 
+}
 
 addUserForm.addEventListener('submit', event => {
     event.preventDefault()
 
-    const username = event.target.username.value
+    username = event.target.username.value
+
   })
 
 
@@ -60,7 +104,7 @@ userForm.addEventListener('submit', event => {
     event.preventDefault()
 
     username = event.target.username.value
-    console.log(event.target.username);
+
 
     event.target.reset()
     showHomepage(username)

@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :showreview ]
 
   # GET /users
   def index
     @users = User.all
 
-    render json: @users
+    render json: @users.map{|user| {username: user.username, id: user.id, reviews: user.reviews, shops: user.shops }}
   end
 
+  def showreview
+    render json: @user.reviews
+  end
   # GET /users/1
   def show
     render json: @user
