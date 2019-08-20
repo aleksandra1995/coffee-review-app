@@ -1,6 +1,11 @@
+
+console.log('hello');
 const addUserBtn = document.querySelector("#new-user-btn-and-prompt")
 const userForm = document.querySelector("#login-form")
+let username
 let addUser = false
+
+console.log(userForm);
 
 addUserBtn.addEventListener('click', () => {
     // hide & seek with the form
@@ -12,20 +17,47 @@ addUserBtn.addEventListener('click', () => {
     }
 })
 
+function showHomepage(username){
+
+  fetch(`http://localhost:3000/users`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      username: username
+    })
+  }).then(resp => resp.json())
+  .then(data =>  createNewUser(data))
+
+}
+
+
+
+function createNewUser(data) {
+  const usernameBar = document.querySelector("#username-bar")
+  usernameBar.innerHTML=`<p>Start leaving reviews, ${data.username}!</p>`
+
+  addUserBtn.style.display = 'none';
+  userForm.style.display = 'none';
+  userId = data.id
+  return userId;
+}
+
+
+
+
+
 userForm.addEventListener('submit', event => {
     event.preventDefault()
-    
-    const username = event.target.username.value
-    
+
+    username = event.target.username.value
+    console.log(event.target.username);
+
     event.target.reset()
     showHomepage(username)
+
+
+
 })
-
-function showHomepage(username){
-    const usernameBar = document.querySelector("#username-bar")
-    usernameBar.innerHTML=`<p>Start leaving reviews, ${username}!</p>`
-
-    addUserBtn.style.display = 'none'
-    userForm.style.display = 'none'
-    
-}
