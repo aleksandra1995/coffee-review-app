@@ -6,29 +6,32 @@ let userId
 let username
 let addUser = false
 const usernameBar = document.querySelector(".username-bar")
+let userExists = false
+
 
 usernameBar.addEventListener('click', function (event) {
 
-  if (event.target.classList.contains('user')) {
+  if (event.target.classList.contains('welcome-msg')) {
   const currentUserId = event.target.dataset.id
-
-  fetch(`http://localhost:3000/shopreview/${currentUserId}`)
+fetch(`http://localhost:3000/shopreview/${currentUserId}`)
     .then(resp => resp.json())
-    .then(oneUserReviews => showUsersReviews(oneUserReviews))
-  }
+    .then(oneUserReviews => showUsersReviews(oneUserReviews))}
+
 })
 
 
 function showUsersReviews(oneUserReviews) {
+if (oneUserReviews === []){console.log("empty")}
+else {
   oneUserReviews.forEach(function (review) {
     console.log(review.comment);
-  })
+  })}
+
 }
 
 
 function showHomepage(username){
 
-  let userExists = false
 
   fetch('http://localhost:3000/users')
     .then(resp => resp.json())
@@ -52,7 +55,7 @@ function showHomepage(username){
         console.log("Lawson was found")
         console.log(username);
         console.log(userId);
-        usernameBar.innerHTML=`<p data-id="${userId}" class="user">Start leaving reviews, ${username}!</p>`
+        usernameBar.innerHTML=`<p data-id="${userId}" class="welcome-msg">Start leaving reviews, ${username}!</p>`
 
 
       } else {
@@ -81,7 +84,7 @@ function showHomepage(username){
 function createNewUser(data) {
   const usernameBar = document.querySelector(".username-bar")
   console.log(usernameBar);
-  usernameBar.innerHTML=`<p class="welcome-msg">Start leaving reviews, ${data.username}!</p>`
+  usernameBar.innerHTML=`<p data-id="${userId}" class="welcome-msg">Start leaving reviews, ${data.username}!</p>`
 
   // addUserBtn.style.display = 'none';
   userForm.style.display = 'none';
