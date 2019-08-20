@@ -2,7 +2,6 @@
 const addUserBtn = document.querySelector("#new-user-btn-and-prompt")
 const userForm = document.querySelector("#login-form")
 const addUserForm = document.querySelector(".add-user-form")
-// addUserForm.style.display = 'none'
 let userId
 let username
 let addUser = false
@@ -18,6 +17,7 @@ usernameBar.addEventListener('click', function (event) {
     .then(oneUserReviews => showUsersReviews(oneUserReviews))
   }
 })
+
 
 function showUsersReviews(oneUserReviews) {
   oneUserReviews.forEach(function (review) {
@@ -79,13 +79,11 @@ function showHomepage(username){
 
 
 function createNewUser(data) {
+  const usernameBar = document.querySelector(".username-bar")
+  console.log(usernameBar);
+  usernameBar.innerHTML=`<p class="welcome-msg">Start leaving reviews, ${data.username}!</p>`
 
-
-
-
-  usernameBar.innerHTML=`<p>Start leaving reviews, ${data.username}!</p>`
-
-  addUserBtn.style.display = 'none';
+  // addUserBtn.style.display = 'none';
   userForm.style.display = 'none';
   userId = data.id
   return userId;
