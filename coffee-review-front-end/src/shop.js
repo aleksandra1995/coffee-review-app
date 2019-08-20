@@ -1,5 +1,5 @@
 const bodyTag = document.getElementById('body')
-const divForPic = document.getElementById('div-for-pic')
+const reviewsDiv = document.getElementById('reviews-div')
 const shopListDiv = document.getElementById('shop-list-div')
 const divForNewReview = document.getElementById('div-for-new-review')
 
@@ -23,9 +23,9 @@ function postOneShop(eachShop) {
   divForEachShop.innerHTML += `<h1 data-id="${eachShop.id}">${eachShop.name}</h1>`
 
   // append to shopListDiv insead of bodyTag
-  // shopListDiv.append(divForEachShop)
+  shopListDiv.append(divForEachShop)
   // bodyTag.append(divForEachShop)
-  bodyTag.append(divForEachShop);
+  // bodyTag.append(divForEachShop);
 
 
     // Adding class to div for CSS
@@ -40,7 +40,7 @@ function postOneShop(eachShop) {
 
 function shopClicked(event) {
   // Adding class for CSS
-  // Changing from divForPic to divForNewReview
+  // Changing from reviewsDiv to divForNewReview
   // divForNewReview.innerHTML appending multiple times
 
   fetch(`http://localhost:3000/shops/${event.target.dataset.id}`)
@@ -50,12 +50,12 @@ function shopClicked(event) {
 
 function postIndInfoAboutShop(shopSelected) {
 
-  divForNewReview.innerHTML = `<img class="shop-img" src="${shopSelected.img}"/>`
+  reviewsDiv.innerHTML = `<img class="shop-img" src="${shopSelected.img}"/>`
 
   fetch(`http://localhost:3000/reviews`)
     .then(resp => resp.json())
     .then(function getReview(reviewsData) {
-      divForPic.innerHTML =
+        divForNewReview.innerHTML =
         `<form id="add-review" style="">
           <h3>Add a Review!</h3>
           <input type="text" name="title" value="" placeholder="Enter a title..." class="input-text">
@@ -68,22 +68,22 @@ function postIndInfoAboutShop(shopSelected) {
         </form>`
 
       const formToAddReview = document.getElementById('add-review')
-        formToAddReview.addEventListener("submit", createNewReview)
+      formToAddReview.addEventListener("submit", createNewReview)
 
-        reviewsData.forEach(function (rev) {
+      reviewsData.forEach(function (rev) {
 
-          if (rev.shop_id === shopSelected.id) {
-              const pForComment = document.createElement('p')
-                pForComment.innerHTML = `
-                <h3>Title: ${rev.title}</h3>
-                <h4>Rating: ${rev.rating}</h4>
-                <ul>
-                <li>
-                ${rev.comment}
-                </li>
-                </ul>
-                `
-            divForNewReview.append(pForComment)
+        if (rev.shop_id === shopSelected.id) {
+            const pForComment = document.createElement('p')
+              pForComment.innerHTML = `
+              <h3>Title: ${rev.title}</h3>
+              <h4>Rating: ${rev.rating}</h4>
+              <ul>
+              <li>
+              ${rev.comment}
+              </li>
+              </ul>
+              `
+        reviewsDiv.append(pForComment)
      }
   })
 
@@ -116,7 +116,7 @@ function postIndInfoAboutShop(shopSelected) {
           </li>
           </ul>
           `
-      divForNewReview.append(ppForComment)
+      reviewsDiv.append(ppForComment)
       })
 
 

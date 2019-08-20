@@ -4,15 +4,6 @@ h1, h2, h3, p {
 
 /************** Start header ****************/
 
-/* #header {
-  background-color: #7a5a00;
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  top: 0;
-} */
-
 .welcome-msg {
   text-align: center;
   font-size: 3em;
@@ -34,6 +25,7 @@ header {
   width: 100%;
   margin: 0;
   border: 0 0 1em 0;
+  opacity: 0.9;
 }
 
 #JAVA-logo {
@@ -42,7 +34,7 @@ header {
   width: 5em;
   height: auto;
   align: left;
-  margin: 0;\
+  margin: 0;
 }
 
 /********************* End header ****************/
@@ -66,7 +58,7 @@ header {
   height: 80vh;
 }
 
-#shop-list-div, #div-for-pic, #div-for-new-review {
+#shop-list-div, #reviews-div, #div-for-new-review {
   background-color: #f5f5dc;
   width: 30vw;
   height: auto;
@@ -74,6 +66,6 @@ header {
 }
 
 .shop-img {
-  height: 50px;
-  width: auto;
+  max-width: 100%;
+  height: auto;
 }

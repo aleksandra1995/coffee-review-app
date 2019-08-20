@@ -3,21 +3,7 @@ console.log('hello');
 const addUserBtn = document.querySelector("#new-user-btn-and-prompt")
 const userForm = document.querySelector("#login-form")
 const addUserForm = document.querySelector(".add-user-form")
-addUserForm.style.display = 'none'
 let username
-let addUser = false
-
-console.log(userForm);
-
-addUserBtn.addEventListener('click', () => {
-    // hide & seek with the form
-    addUser = !addUser
-    if (addUser) {
-        addUserForm.style.display = 'block'
-    } else {
-        addUserForm.style.display = 'none'
-    }
-})
 
 function showHomepage(username){
 
