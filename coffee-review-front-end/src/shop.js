@@ -4,8 +4,6 @@ const shopListDiv = document.getElementById('shop-list-div')
 const divForNewReview = document.getElementById('div-for-new-review')
 const addShopForm = document.getElementById('add-coffee-shop-form')
 
-console.log(userForm);
-
 /////////////////////// Adding eventListeners to forms and buttons
 userForm.addEventListener('submit', event => {
   username = event.target.username.value
@@ -29,6 +27,7 @@ function postOneShop(eachShop) {
   // CSS button transition won't work without <span>
   // divForEachShop.innerHTML += `<button data-id="${eachShop.id}" class="shop-button"><span>${eachShop.name}</span></button>`
   divForEachShop.innerHTML += `<button data-id="${eachShop.id}" id="button-${eachShop.id}" class="shop-button">${eachShop.name}</button>`
+  divForEachShop.setAttribute("id",`button-div-${eachShop.id}`)
 
   shopListDiv.append(divForEachShop)
 

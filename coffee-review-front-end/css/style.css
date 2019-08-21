@@ -112,7 +112,7 @@ input:hover, #edit-shop-button:hover {
   transition: all 0.5s;
 }
 
-.shop-button:hover {
+.shop-button:hover, button:hover {
   background-color: white;
   cursor: pointer;
 }

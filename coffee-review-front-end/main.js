@@ -77,16 +77,16 @@ function renderEditForm(event) {
     const formToEditDiv = document.createElement('div')
 
     formToEditDiv.innerHTML =`
-    <form data-id="${event.target.dataset.id}" id="edit-review" style="">
-      <h3>Edit a Review!</h3>
-      <input type="text" name="title" value="" placeholder="Edit a title" class="input-text">
-      <br>
-      <input type="number" name="rating" value="" placeholder="Enter a rating..." class="input-text">
-      <br>
-      <input type="text" name="comment" value="" placeholder="Enter a comment..." class="input-text">
-      <br>
-      <input type="submit" name="submit" value="Edit a Review" class="submit">
-    </form>
+      <form data-id="${event.target.dataset.id}" id="edit-review" style="">
+        <h3>Edit a Review!</h3>
+        <input type="text" name="title" value="" placeholder="Edit a title" class="input-text">
+        <br>
+        <input type="number" name="rating" value="" placeholder="Enter a rating..." class="input-text">
+        <br>
+        <input type="text" name="comment" value="" placeholder="Enter a comment..." class="input-text">
+        <br>
+        <input type="submit" name="submit" value="Edit a Review" class="submit">
+      </form>
     `
 
     divForNewReview.append(formToEditDiv)
@@ -158,10 +158,8 @@ function editReview(event) {
     <button data-id="${data.id}" class="delete-button"> Delete Review</button>
 
     `
-})
-event.target.remove()
-
-
+  })
+  event.target.remove()
 }
 
 function showHomepage(username){
@@ -229,7 +227,7 @@ addUserForm.addEventListener('submit', event => {
 
     username = event.target.username.value
 
-  })
+})
 
 
 userForm.addEventListener('submit', event => {

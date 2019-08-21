@@ -113,9 +113,9 @@ function editShop(event, shopSelected){
       <input type="text" name="location" value="" placeholder="Change location of the shop...">
       <br>
       <input type="submit" name="submit" value="Update the coffee shop!">
+      <button class="delete-button" onclick="deleteShop(${shopSelected})">Delete Shop</button>
     </form>
     `
-
 
   // editShopForm.addEventListener('submit', event => updateShop(event, shopSelected, newName, newImageURL, newLocation))
   editShopForm.addEventListener('submit', (event) => {
@@ -129,14 +129,11 @@ function editShop(event, shopSelected){
   })
 
   reviewsDiv.append(editShopForm)
+
+  // editShopForm.addEventListener('click', deleteShop)
 }
 
 function updateShop(event, shopSelected, newName, newImageURL, newLocation){
-  console.log(event.target)
-  console.log(newName)
-  console.log(newImageURL)
-  console.log(newLocation)
-  // console.log(shopSelected);
 
   fetch(`http://localhost:3000/shops/${shopSelected.id}`, {
     method: "PATCH",
@@ -156,4 +153,20 @@ function updateShop(event, shopSelected, newName, newImageURL, newLocation){
       <button data-id="${updatedShop.id}" id="button-${updatedShop.id}" class="shop-button">${updatedShop.name}</button>
     `
   })
+}
+
+function deleteShop(shopSelected){
+
+  const buttonDiv = document.getElementById(`button-div-${shopSelected.id}`)
+  debugger;
+
+  fetch(`http://localhost:3000/shops/${shopSelected.id}`, {
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+
+  buttonDiv.remove()
 }
