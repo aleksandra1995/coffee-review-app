@@ -7,6 +7,18 @@ let username
 let addUser = false
 const usernameBar = document.querySelector(".username-bar")
 let userExists = false
+const shopsArray = []
+const usersArray = []
+
+// Populate shopsArray
+fetch('http://localhost:3000/shops')
+  .then(resp => resp.json())
+  .then(shop => shopsArray.push(shop))
+
+// Populate usersArray
+fetch('http://localhost:3000/users')
+  .then(resp => resp.json())
+  .then(user => usersArray.push(user))
 
 
 usernameBar.addEventListener('click', function (event) {
@@ -15,17 +27,35 @@ usernameBar.addEventListener('click', function (event) {
   const currentUserId = event.target.dataset.id
 fetch(`http://localhost:3000/shopreview/${currentUserId}`)
     .then(resp => resp.json())
-    .then(oneUserReviews => showUsersReviews(oneUserReviews))}
+    .then(oneUserReviews => showUsersReviews(oneUserReviews, currentUserId))}
 
 })
 
 
-function showUsersReviews(oneUserReviews) {
-if (oneUserReviews === []){console.log("empty")}
-else {
-  oneUserReviews.forEach(function (review) {
-    console.log(review.comment);
-  })}
+function showUsersReviews(oneUserReviews, currentUserId) {
+  if (oneUserReviews === []){console.log("empty")}
+  else {
+    oneUserReviews.forEach(function (review) {
+      console.log(review.comment);
+
+      const pForReview = document.createElement('p')
+      // Adding class user-review-card
+      pForReview.classList.add("user-review-card")
+      pForReview.innerHTML = `
+        <h3>Title: ${review.title}</h3>
+        <h4>Coffee Shop: ${shopsArray[0][review.shop_id - 1].name}</h4>
+        <h4>User: ${usersArray[0][currentUserId - 1].username}</h4>
+        <h4>Rating: ${review.rating}</h4>
+        <ul>
+        <li>
+        ${review.comment}
+        </li>
+        </ul>
+      `
+
+      divForNewReview.append(pForReview)
+    })
+  }
 
 }
 
