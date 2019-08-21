@@ -67,6 +67,28 @@ header {
   text-align: center;
 }
 
+/****************** Forms **********************/
+input {
+  /* width: 80%; */
+  padding: 0.5em 2em;
+  margin: 0.25em 0;
+  box-sizing: border-box;
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+
+input {
+  transition-timing-function: 0.4s ease-in;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.44s ease-in-out;
+}
+
+input:focus {
+  width: 80%;
+}
+
+/****************** Forms end ***********************/
+
 /******************** Shop list buttons ********************/
 
 .shop-button {
