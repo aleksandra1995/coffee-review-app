@@ -4,8 +4,17 @@
 
 function postIndInfoAboutShop(shopSelected) {
 
-  reviewsDiv.innerHTML = `<img class="shop-img" src="${shopSelected.img}"/>`
-  reviewsDiv.innerHTML += `<h3>All reviews for this coffee shop:</h3>`
+  reviewsDiv.innerHTML = `
+  <img class="shop-img" src="${shopSelected.img}"/>
+  <h3>${shopSelected.name}</h3>
+  <h4>Located at: ${shopSelected.location}</h4>
+  <button id="edit-shop-button">Edit ${shopSelected.name}</button>
+  `
+  reviewsDiv.innerHTML += `<h3>All reviews for ${shopSelected.name}:</h3>`
+
+  const editShopButton = document.getElementById('edit-shop-button')
+
+  editShopButton.addEventListener('click', event => editShop(event, shopSelected))
 
   fetch(`http://localhost:3000/reviews`)
     .then(resp => resp.json())
@@ -81,12 +90,66 @@ function postIndInfoAboutShop(shopSelected) {
       event.target.reset()
       })
 
-
     }
-
-
 
   })
 
+}
 
+function editShop(event, shopSelected){
+  const editShopForm = document.createElement('form')
+
+  editShopForm.innerHTML = `
+    <form id="edit-coffee-shop-form" action="index.html" method="post">
+      <h2>Edit ${shopSelected.name}</h2>
+      <input type="text" name="name" value="" placeholder="Change the name of the shop...">
+      <br>
+      <input type="text" name="image" value="" placeholder="Change the URL to picture of the shop...">
+      <br>
+      <input type="text" name="location" value="" placeholder="Change location of the shop...">
+      <br>
+      <input type="submit" name="submit" value="Update the coffee shop!">
+    </form>
+    `
+
+
+  // editShopForm.addEventListener('submit', event => updateShop(event, shopSelected, newName, newImageURL, newLocation))
+  editShopForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    const newName = event.target.name.value
+    const newImageURL = event.target.image.value
+    const newLocation = event.target.location.value
+    updateShop(event, shopSelected, newName, newImageURL, newLocation)
+    event.target.remove()
+  })
+
+  reviewsDiv.append(editShopForm)
+}
+
+function updateShop(event, shopSelected, newName, newImageURL, newLocation){
+  console.log(event.target)
+  console.log(newName)
+  console.log(newImageURL)
+  console.log(newLocation)
+  // console.log(shopSelected);
+
+  fetch(`http://localhost:3000/shops/${shopSelected.id}`, {
+    method: "PATCH",
+    headers: {
+      'Content-Type':'application/json',
+      'Accept':'application/json'
+    },
+    body: JSON.stringify({
+      name: newName,
+      img: newImageURL,
+      location: newLocation
+    })
+  }).then(resp => resp.json())
+  .then(updatedShop => {
+    const shopButton = document.getElementById(`button-${updatedShop.id}`)
+    shopButton.innerHTML=`
+      <button data-id="${updatedShop.id}" id="button-${updatedShop.id}" class="shop-button">${updatedShop.name}</button>
+    `
+  })
 }

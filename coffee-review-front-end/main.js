@@ -47,9 +47,9 @@ function showUsersReviews(oneUserReviews, currentUserId) {
         <h4>User: ${usersArray[0][currentUserId - 1].username}</h4>
         <h4>Rating: ${review.rating}</h4>
         <ul>
-        <li>
-        ${review.comment}
-        </li>
+          <li>
+            ${review.comment}
+          </li>
         </ul>
       `
 
@@ -66,12 +66,9 @@ function showHomepage(username){
   fetch('http://localhost:3000/users')
     .then(resp => resp.json())
     .then(function (userToFind ) {
-        // console.log(username);
         userToFind.find(function(user) {
-          // console.log(user);
 
           if (user.username === username){
-            // console.log("Lawson was found")
             userExists = true
             userId = user.id
 

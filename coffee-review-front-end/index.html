@@ -15,7 +15,7 @@
       <div id="login-form">
           <form class="add-user-form">
               <h2>Create a new account by entering a username</h2>
-              <input type="text" name="username" placeholder="Enter a new username">
+              <input type="text" id="username-bar" name="username" placeholder="Enter a new username">
               <br>
               <input type="submit" name="submit" value="Start reviewing coffee shops!">
           </form>
@@ -25,6 +25,21 @@
   <div id="main">
 
     <div id="shop-list-div">
+
+      <div class="add-coffee-shop-form-div">
+        <form id="add-coffee-shop-form" action="index.html" method="post">
+          <h2>Create a new coffee shop!</h2>
+          <input type="text" name="name" value="" placeholder="Name of the shop...">
+          <br>
+          <input type="text" name="image" value="" placeholder="URL to picture of the shop...">
+          <br>
+          <input type="text" name="location" value="" placeholder="Location of the shop...">
+          <br>
+          <input type="submit" name="submit" value="Create a new coffee shop">
+        </form>
+      </div>
+      <h2>Existing Coffee Shops</h2>
+
     </div>
 
     <div id="reviews-div">

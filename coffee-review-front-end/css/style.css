@@ -68,7 +68,7 @@ header {
 }
 
 /****************** Forms **********************/
-input {
+input, #edit-shop-button {
   /* width: 80%; */
   padding: 0.5em 2em;
   margin: 0.25em 0;
@@ -84,7 +84,20 @@ input {
 }
 
 input:focus {
-  width: 80%;
+  width: 50%;
+}
+
+#username-bar:focus {
+  width: 30%;
+}
+
+input[type=text]:hover {
+  /* cursor: copy; */
+  cursor: pointer;
+}
+
+input:hover, #edit-shop-button:hover {
+  cursor: pointer;
 }
 
 /****************** Forms end ***********************/
@@ -94,7 +107,7 @@ input:focus {
 .shop-button {
   font-size: 3em;
   margin: 1vh;
-  /* border: 2px solid #4CAF50; */
+  border: 2px solid gray;
   border-radius: 25px;
   transition: all 0.5s;
 }
