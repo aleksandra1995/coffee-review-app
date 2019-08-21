@@ -40,6 +40,7 @@ function postIndInfoAboutShop(shopSelected) {
 
         if (rev.shop_id === shopSelected.id) {
             const pForComment = document.createElement('p')
+            pForComment.setAttribute("id", `comment-${rev.id}`)
               // Adding class reivew-card
               pForComment.classList.add("review-card")
               pForComment.innerHTML = `
@@ -76,6 +77,8 @@ function postIndInfoAboutShop(shopSelected) {
 
         const ppForComment = document.createElement('p')
           // Adding class reivew-card
+          ppForComment.setAttribute("id", `comment-${newReviewFromForm.id}`)
+
           ppForComment.classList.add("review-card")
           ppForComment.innerHTML = `
             <h3>Title: ${newReviewFromForm.title}</h3>
@@ -85,6 +88,7 @@ function postIndInfoAboutShop(shopSelected) {
             ${newReviewFromForm.comment}
             </li>
             </ul>
+
           `
       reviewsDiv.append(ppForComment)
       event.target.reset()

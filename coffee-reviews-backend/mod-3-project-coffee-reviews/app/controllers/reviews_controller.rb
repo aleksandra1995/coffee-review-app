@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 def index
   @reviews = Review.all
 
-  render json: @reviews.map{|review| {rating: review.rating, comment: review.comment, title: review.title, shop_id: review.shop_id, user_id: review.user_id}}
+  render json: @reviews.map{|review| {id: review.id, rating: review.rating, comment: review.comment, title: review.title, shop_id: review.shop_id, user_id: review.user_id}}
 end
 
 # GET /reviews/1
