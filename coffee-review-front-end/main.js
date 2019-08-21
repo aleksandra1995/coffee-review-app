@@ -10,6 +10,7 @@ let userExists = false
 const shopsArray = []
 const usersArray = []
 
+
 // Populate shopsArray
 fetch('http://localhost:3000/shops')
   .then(resp => resp.json())
@@ -21,20 +22,28 @@ fetch('http://localhost:3000/users')
   .then(user => usersArray.push(user))
 
 
-usernameBar.addEventListener('click', function (event) {
 
-  if (event.target.classList.contains('welcome-msg')) {
-  const currentUserId = event.target.dataset.id
-fetch(`http://localhost:3000/shopreview/${currentUserId}`)
-    .then(resp => resp.json())
-    .then(oneUserReviews => showUsersReviews(oneUserReviews, currentUserId))}
-
-})
+// usernameBar.addEventListener('click', function (event) {
+//
+//   if (event.target.classList.contains('welcome-msg')) {
+//     console.log(event.target);
+//   const currentUserId = event.target.dataset.id
+// fetch(`http://localhost:3000/shopreview/${currentUserId}`)
+//     .then(resp => resp.json())
+//     .then(oneUserReviews => showUsersReviews(oneUserReviews, currentUserId))}
+//
+// })
 
 
 function showUsersReviews(oneUserReviews, currentUserId) {
   if (oneUserReviews === []){console.log("empty")}
   else {
+    const hereAreTheReviewsTag = document.createElement('h2')
+
+    hereAreTheReviewsTag.innerText = "Here is a list of your reviews!"
+    divForNewReview.append(hereAreTheReviewsTag)
+    
+
     oneUserReviews.forEach(function (review) {
 
 
@@ -43,6 +52,7 @@ function showUsersReviews(oneUserReviews, currentUserId) {
 
       // Adding class user-review-card
       pForReview.classList.add("user-review-card")
+
       pForReview.innerHTML += `
         <h3>Title: ${review.title}</h3>
         <h4>Coffee Shop: ${shopsArray[0][review.shop_id - 1].name}</h4>
@@ -72,9 +82,19 @@ function showUsersReviews(oneUserReviews, currentUserId) {
 
 function renderEditForm(event) {
   if (event.target.classList.contains('edit-button') ) {
-
+    const formDivEdit = document.getElementById('edit-div')
+    console.log(formDivEdit);
     const userReviewCard = document.getElementById(`${event.target.dataset.id}`)
     const formToEditDiv = document.createElement('div')
+    formToEditDiv.setAttribute("id", "edit-div")
+    console.log(formToEditDiv.innerHTML);
+
+
+
+    if (formDivEdit !== null){
+      alert("Scroll down")
+      return;
+    }
 
     formToEditDiv.innerHTML =`
     <form data-id="${event.target.dataset.id}" id="edit-review" style="">
@@ -114,6 +134,7 @@ function renderEditForm(event) {
     tagForEditedReview22.remove()
 
   }
+
 }
 
 function editReview(event) {
@@ -183,13 +204,24 @@ function showHomepage(username){
       })
 
       if (userExists){
-        console.log("Lawson was found")
-        console.log(username);
-        console.log(userId);
-        usernameBar.innerHTML=`<p data-id="${userId}" class="welcome-msg">Start leaving reviews, ${username}!</p>`
+        usernameBar.innerHTML=`<p data-id="${userId}" class="welcome-msg">Start leaving reviews, ${username}!</p>
+        <button data-id="${userId}" id="button-for-all-reviews">Click here to see all of your reviews</button>`
+        const buttonForAllReviews = document.getElementById('button-for-all-reviews')
+        console.log(buttonForAllReviews);
+        buttonForAllReviews.addEventListener('click', function (event) {
+
+
+            console.log(event.target);
+          const currentUserId = event.target.dataset.id
+        fetch(`http://localhost:3000/shopreview/${currentUserId}`)
+            .then(resp => resp.json())
+            .then(oneUserReviews => showUsersReviews(oneUserReviews, currentUserId))
+
+        })
 
 
       } else {
+        console.log("You need to create an account");
         fetch(`http://localhost:3000/users`, {
           method: "POST",
           headers: {
@@ -201,7 +233,6 @@ function showHomepage(username){
           })
         }).then(resp => resp.json())
         .then(data =>  createNewUser(data))
-        console.log("Make a new user")
       }
 
       })

@@ -19,6 +19,7 @@ function postIndInfoAboutShop(shopSelected) {
   fetch(`http://localhost:3000/reviews`)
     .then(resp => resp.json())
     .then(function getReview(reviewsData) {
+
         divForNewReview.innerHTML =
         `<form id="add-review" style="">
           <h3>Add a Review!</h3>
@@ -30,8 +31,9 @@ function postIndInfoAboutShop(shopSelected) {
           <br>
           <input type="submit" name="submit" value="Create a New Review" class="submit">
         </form>
-        <h3>All the reviews for this user:</h3>
+
         `
+
 
       const formToAddReview = document.getElementById('add-review')
       formToAddReview.addEventListener("submit", createNewReview)
@@ -58,7 +60,7 @@ function postIndInfoAboutShop(shopSelected) {
 
     function createNewReview(event) {
       event.preventDefault()
-
+      if (!!userId){
       fetch('http://localhost:3000/reviews',{
         method: "POST",
         headers: {
@@ -91,8 +93,13 @@ function postIndInfoAboutShop(shopSelected) {
 
           `
       reviewsDiv.append(ppForComment)
+      divForNewReview.append(ppForComment)
       event.target.reset()
       })
+    }
+    else {
+      divForNewReview.innerHTML += "<h3>You must create a user first!!</h3>"
+    }
 
     }
 
