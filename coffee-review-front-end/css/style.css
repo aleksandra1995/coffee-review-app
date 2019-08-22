@@ -7,6 +7,13 @@ h1, h2, h3, p {
   text-shadow: 1px 1px #ffffff;
 }
 
+.app-name {
+  color: #593C1F;
+  text-shadow: 1px 1px #ffffff;
+  font-size: 1.5em;
+  font-family: arial;
+}
+
 /************** Start header ****************/
 
 .welcome-msg {
