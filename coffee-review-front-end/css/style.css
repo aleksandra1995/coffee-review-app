@@ -1,3 +1,8 @@
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
 h1, h2, h3, p {
   text-shadow: 1px 1px #ffffff;
 }
@@ -11,8 +16,11 @@ h1, h2, h3, p {
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   background-image: url("coffee beans background image.jpg");
+  background-size: cover;
   background-attachment: fixed;
   background-position: center;
 }
@@ -62,9 +70,13 @@ header {
 #shop-list-div, #reviews-div, #div-for-new-review {
   background-color: #f5f5dc;
   width: 30vw;
-  height: auto;
+  height: 100vh;
   margin: 1em;
   text-align: center;
+}
+
+.div-for-shop-list, .div-for-comments {
+  background-color: #f5f5dc;
 }
 
 /****************** Forms input **********************/
@@ -104,8 +116,11 @@ input:hover, #edit-shop-button:hover {
 /******************** Shop list buttons ********************/
 
 .shop-button {
+  width: inherit;
+  height: 4em;
+  padding: 2em;
   background-color: #d9b38c;
-  font-size: 3em;
+  font-size: 1em;
   margin: 1vh;
   border: 2px solid gray;
   border-radius: 25px;

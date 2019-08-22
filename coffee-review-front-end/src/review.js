@@ -68,7 +68,7 @@ function deleteShopButtonMethod(event) {
             const pForComment = document.createElement('p')
             pForComment.setAttribute("id", `comment-${rev.id}`)
               // Adding class reivew-card
-              pForComment.classList.add("review-card")
+              pForComment.classList.add("review-card", "div-for-comments")
               pForComment.innerHTML = `
                 <h3>Title: ${rev.title}</h3>
                 <h4>Rating: ${rev.rating}</h4>
