@@ -212,9 +212,11 @@ input:hover, #edit-shop-button:hover {
   background-color: #d9b38c;
   margin: 10px 10px 10px 10px;
   width: 95%;
+  box-shadow: 5px 10px 5px #888888;
 }
 
 .user-review-card {
   background-color: #d9b38c;
   margin: 10px 10px 10px 10px;
+  box-shadow: 5px 10px 5px #888888;
 }
