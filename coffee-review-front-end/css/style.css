@@ -71,6 +71,7 @@ header {
 #shop-list-div, #reviews-div, #div-for-new-review {
   background-color: #f5f5dc;
   width: 30vw;
+  /* height: 100vh expands the height of the div to fit added contents */
   height: 100vh;
   margin: 1em;
   display: table;
@@ -121,13 +122,40 @@ input:hover, #edit-shop-button:hover {
 }
 
 /****************** Forms input end ***********************/
+#button-for-all-reviews {
+  width: 30%;
+  height: 4em;
+  background-color: #d9b38c;
+  font-size: 1em;
+  margin: 1vh;
+  border: 2px solid gray;
+  border-radius: 25px;
+  transition: all 0.5s;
+  margin-left: 70vh;
+}
+#button-for-all-reviews:hover, button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.delete-button, .edit-button, #edit-shop-button, .submit, input {
+  padding: 0.5em 2em;
+  margin: 0.25em 0;
+  box-sizing: border-box;
+  border: 2px solid gray;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+.delete-button:hover, .edit-button:hover, #edit-shop-button:hover, .submit:hover, input:hover {
+  background-color: #d9b38c;
+}
 
 /******************** Shop list buttons ********************/
 
 .shop-button {
   width: inherit;
   height: 4em;
-  padding: 2em;
   background-color: #d9b38c;
   font-size: 1em;
   margin: 1vh;
@@ -176,6 +204,7 @@ input:hover, #edit-shop-button:hover {
 .review-card {
   background-color: #d9b38c;
   margin: 10px 10px 10px 10px;
+  width: 95%;
 }
 
 .user-review-card {

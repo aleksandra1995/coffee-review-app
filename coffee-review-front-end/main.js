@@ -158,6 +158,8 @@ function editReview(event) {
     tagForEditedReview.innerHTML = `
     <h3>Title: ${data.title}</h3>
     <h4>Rating: ${data.rating}</h4>
+    <h4>Coffee Shop: ${shopsArray[0][review.shop_id - 1].name}</h4>
+    <h4>User: ${usersArray[0][currentUserId - 1].username}</h4>
     <ul>
     <li>
     ${data.comment}
@@ -171,6 +173,8 @@ function editReview(event) {
     tagForEditedReview2.innerHTML = `
     <h3>Title: ${data.title}</h3>
     <h4>Rating: ${data.rating}</h4>
+    <h4>Coffee Shop: ${shopsArray[0][review.shop_id - 1].name}</h4>
+    <h4>User: ${usersArray[0][currentUserId - 1].username}</h4>
     <ul>
     <li>
     ${data.comment}
