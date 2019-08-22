@@ -67,15 +67,25 @@ header {
   height: 80vh;
 }
 
+/* change to class */
 #shop-list-div, #reviews-div, #div-for-new-review {
   background-color: #f5f5dc;
   width: 30vw;
   height: 100vh;
   margin: 1em;
+
+  display: table; 
   text-align: center;
 }
 
-.div-for-shop-list, .div-for-comments {
+.div-for-shop-list {
+  background-color: #f5f5dc;
+}
+
+.div-for-comments {
+  width: 10em;
+  overflow: auto;
+  display: table;
   background-color: #f5f5dc;
 }
 

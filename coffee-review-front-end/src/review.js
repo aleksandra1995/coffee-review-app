@@ -58,7 +58,6 @@ function deleteShopButtonMethod(event) {
 
         `
 
-
       const formToAddReview = document.getElementById('add-review')
       formToAddReview.addEventListener("submit", createNewReview)
 

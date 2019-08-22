@@ -49,7 +49,8 @@ function createNewCoffeeShop(event){
     },
     body: JSON.stringify({
       name: event.target.name.value,
-      img: event.target.image.value
+      img: event.target.image.value,
+      location: event.target.location.value
     })
   }).then(resp => resp.json())
   .then(newShop => postOneShop(newShop))
