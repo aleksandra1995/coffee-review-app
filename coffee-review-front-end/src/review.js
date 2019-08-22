@@ -9,10 +9,34 @@ function postIndInfoAboutShop(shopSelected) {
   <h3>${shopSelected.name}</h3>
   <h4>Located at: ${shopSelected.location}</h4>
   <button id="edit-shop-button">Edit ${shopSelected.name}</button>
+  <button data-id="${shopSelected.id}" id="delete-shop-button"class="delete-button" )">Delete Shop</button>
+
   `
   reviewsDiv.innerHTML += `<h3>All reviews for ${shopSelected.name}:</h3>`
 
   const editShopButton = document.getElementById('edit-shop-button')
+  const deleteShopButton = document.getElementById('delete-shop-button')
+  console.log(deleteShopButton);
+
+  deleteShopButton.addEventListener("click", deleteShopButtonMethod)
+
+function deleteShopButtonMethod(event) {
+  const shopIdFromDeleteButton = event.target.dataset.id
+  console.log(shopIdFromDeleteButton);
+  fetch(`http://localhost:3000/shops/${shopIdFromDeleteButton}`, {
+    method: "DELETE",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+
+  const divToBeDeleted = document.getElementById(`${shopIdFromDeleteButton}`)
+  divToBeDeleted.remove()
+
+}
+
+
 
   editShopButton.addEventListener('click', event => editShop(event, shopSelected))
 
@@ -120,13 +144,14 @@ function editShop(event, shopSelected){
       <input type="text" name="location" value="" placeholder="Change location of the shop...">
       <br>
       <input type="submit" name="submit" value="Update the coffee shop!">
-      <!-- <button class="delete-button" onclick="deleteShop(${shopSelected})">Delete Shop</button> -->
-      <button class="delete-button" id="delete-button-${shopSelected.id}" onclick="deleteShop(${shopSelected})">Delete Shop</button>
-    </form>
+
     `
+
+
 
   // editShopForm.addEventListener('submit', event => updateShop(event, shopSelected, newName, newImageURL, newLocation))
   editShopForm.addEventListener('submit', (event) => {
+
     event.preventDefault()
 
     const newName = event.target.name.value
@@ -160,24 +185,8 @@ function updateShop(event, shopSelected, newName, newImageURL, newLocation){
   }).then(resp => resp.json())
   .then(updatedShop => {
     const shopButton = document.getElementById(`button-${updatedShop.id}`)
-    shopButton.innerHTML=`
+    shopListDiv.innerHTML +=`
       <button data-id="${updatedShop.id}" id="button-${updatedShop.id}" class="shop-button">${updatedShop.name}</button>
     `
   })
-}
-
-function deleteShop(shopSelected){
-
-  // const buttonDiv = document.getElementById(`button-div-${shopSelected.id}`)
-  // debugger;
-
-  fetch(`http://localhost:3000/shops/${shopSelected.id}`, {
-    method: "DELETE",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    }
-  })
-
-  // buttonDiv.remove()
 }

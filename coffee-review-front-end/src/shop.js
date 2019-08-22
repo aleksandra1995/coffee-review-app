@@ -27,7 +27,7 @@ function postOneShop(eachShop) {
   // CSS button transition won't work without <span>
   // divForEachShop.innerHTML += `<button data-id="${eachShop.id}" class="shop-button"><span>${eachShop.name}</span></button>`
   divForEachShop.innerHTML += `<button data-id="${eachShop.id}" id="button-${eachShop.id}" class="shop-button">${eachShop.name}</button>`
-  divForEachShop.setAttribute("id",`button-div-${eachShop.id}`)
+  divForEachShop.setAttribute("id",`${eachShop.id}`)
 
   shopListDiv.append(divForEachShop)
 
@@ -67,3 +67,5 @@ function shopClicked(event) {
     .then(resp => resp.json())
     .then(shopSelected => postIndInfoAboutShop(shopSelected));
 }
+
+// Leads to review.js
