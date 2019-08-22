@@ -67,7 +67,7 @@ header {
   text-align: center;
 }
 
-/****************** Forms **********************/
+/****************** Forms input **********************/
 input, #edit-shop-button {
   /* width: 80%; */
   padding: 0.5em 2em;
@@ -99,7 +99,7 @@ input:hover, #edit-shop-button:hover {
   cursor: pointer;
 }
 
-/****************** Forms end ***********************/
+/****************** Forms input end ***********************/
 
 /******************** Shop list buttons ********************/
 

@@ -42,7 +42,7 @@ function showUsersReviews(oneUserReviews, currentUserId) {
 
     hereAreTheReviewsTag.innerText = "Here is a list of your reviews!"
     divForNewReview.append(hereAreTheReviewsTag)
-    
+
 
     oneUserReviews.forEach(function (review) {
 
@@ -53,7 +53,7 @@ function showUsersReviews(oneUserReviews, currentUserId) {
       // Adding class user-review-card
       pForReview.classList.add("user-review-card")
 
-      pForReview.innerHTML += `
+      pForReview.innerHTML += ` 
         <h3>Title: ${review.title}</h3>
         <h4>Coffee Shop: ${shopsArray[0][review.shop_id - 1].name}</h4>
         <h4>User: ${usersArray[0][currentUserId - 1].username}</h4>

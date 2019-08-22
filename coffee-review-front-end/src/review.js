@@ -120,7 +120,8 @@ function editShop(event, shopSelected){
       <input type="text" name="location" value="" placeholder="Change location of the shop...">
       <br>
       <input type="submit" name="submit" value="Update the coffee shop!">
-      <button class="delete-button" onclick="deleteShop(${shopSelected})">Delete Shop</button>
+      <!-- <button class="delete-button" onclick="deleteShop(${shopSelected})">Delete Shop</button> -->
+      <button class="delete-button" id="delete-button-${shopSelected.id}" onclick="deleteShop(${shopSelected})">Delete Shop</button>
     </form>
     `
 
@@ -137,7 +138,10 @@ function editShop(event, shopSelected){
 
   reviewsDiv.append(editShopForm)
 
+  const deleteButton = document.getElementById(`delete-button-${shopSelected.id}`)
+
   // editShopForm.addEventListener('click', deleteShop)
+  deleteButton.addEventListener('click', deleteShop(event, shopSelected))
 }
 
 function updateShop(event, shopSelected, newName, newImageURL, newLocation){
@@ -164,8 +168,8 @@ function updateShop(event, shopSelected, newName, newImageURL, newLocation){
 
 function deleteShop(shopSelected){
 
-  const buttonDiv = document.getElementById(`button-div-${shopSelected.id}`)
-  debugger;
+  // const buttonDiv = document.getElementById(`button-div-${shopSelected.id}`)
+  // debugger;
 
   fetch(`http://localhost:3000/shops/${shopSelected.id}`, {
     method: "DELETE",
@@ -175,5 +179,5 @@ function deleteShop(shopSelected){
     }
   })
 
-  buttonDiv.remove()
+  // buttonDiv.remove()
 }
