@@ -56,7 +56,6 @@ function deleteShopButtonMethod(event) {
           <br>
           <input type="submit" name="submit" value="Create a New Review" class="submit">
         </form>
-
         `
 
       const formToAddReview = document.getElementById('add-review')
@@ -113,7 +112,8 @@ function deleteShopButtonMethod(event) {
             <li>
             ${newReviewFromForm.comment}
             </li>
-            <button id="edit-shop-button">Edit ${shopSelected.name}</button>
+            <!-------------- error with button here  -->
+            <button id="edit-button">Edit this review</button>
             <button data-id="${shopSelected.id}" id="delete-shop-button"class="delete-button" )">Delete Shop</button>
             </ul>
 

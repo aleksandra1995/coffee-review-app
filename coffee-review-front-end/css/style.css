@@ -73,8 +73,7 @@ header {
   width: 30vw;
   height: 100vh;
   margin: 1em;
-
-  display: table; 
+  display: table;
   text-align: center;
 }
 
