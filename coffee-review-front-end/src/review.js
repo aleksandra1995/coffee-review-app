@@ -4,6 +4,7 @@
 
 function postIndInfoAboutShop(shopSelected) {
 
+
   reviewsDiv.innerHTML = `
   <img class="shop-img" src="${shopSelected.img}"/>
   <h3>${shopSelected.name}</h3>
@@ -112,6 +113,8 @@ function deleteShopButtonMethod(event) {
             <li>
             ${newReviewFromForm.comment}
             </li>
+            <button id="edit-shop-button">Edit ${shopSelected.name}</button>
+            <button data-id="${shopSelected.id}" id="delete-shop-button"class="delete-button" )">Delete Shop</button>
             </ul>
 
           `
@@ -165,7 +168,7 @@ function editShop(event, shopSelected){
   const deleteButton = document.getElementById(`delete-button-${shopSelected.id}`)
 
   // editShopForm.addEventListener('click', deleteShop)
-  deleteButton.addEventListener('click', deleteShop(event, shopSelected))
+
 }
 
 function updateShop(event, shopSelected, newName, newImageURL, newLocation){
