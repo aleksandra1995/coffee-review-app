@@ -112,12 +112,14 @@ function deleteShopButtonMethod(event) {
             <li>
             ${newReviewFromForm.comment}
             </li>
-            <!-------------- error with button here  -->
-            <button id="edit-button">Edit this review</button>
-            <button data-id="${shopSelected.id}" id="delete-shop-button"class="delete-button" )">Delete Shop</button>
+            <button data-id="${newReviewFromForm.id}" class="edit-button"> Edit Review</button>
+            <button data-id="${newReviewFromForm.id}" class="delete-button"> Delete Review</button>
             </ul>
 
           `
+          divForNewReview.addEventListener("click", renderEditForm)
+
+
       reviewsDiv.append(ppForComment)
       divForNewReview.append(ppForComment)
       event.target.reset()

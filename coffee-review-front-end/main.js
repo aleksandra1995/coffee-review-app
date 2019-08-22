@@ -83,11 +83,9 @@ function showUsersReviews(oneUserReviews, currentUserId) {
 function renderEditForm(event) {
   if (event.target.classList.contains('edit-button') ) {
     const formDivEdit = document.getElementById('edit-div')
-    console.log(formDivEdit);
     const userReviewCard = document.getElementById(`${event.target.dataset.id}`)
     const formToEditDiv = document.createElement('div')
     formToEditDiv.setAttribute("id", "edit-div")
-    console.log(formToEditDiv.innerHTML);
 
 
 
@@ -165,6 +163,9 @@ function editReview(event) {
     ${data.comment}
     </li>
     </ul>
+    <button data-id="${data.id}" class="edit-button"> Edit Review</button>
+    <button data-id="${data.id}" class="delete-button"> Delete Review</button>
+
     `
 
     tagForEditedReview2.innerHTML = `
@@ -175,11 +176,12 @@ function editReview(event) {
     ${data.comment}
     </li>
     </ul>
-    <button data-id="${data.id}" class="edit-button"> Edit Review</button>
-    <button data-id="${data.id}" class="delete-button"> Delete Review</button>
 
     `
+
   })
+  divForNewReview.addEventListener("click", renderEditForm)
+
   event.target.remove()
 }
 
