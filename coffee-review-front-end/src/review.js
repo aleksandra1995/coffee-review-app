@@ -10,6 +10,7 @@ function postIndInfoAboutShop(shopSelected) {
   <h3>${shopSelected.name}</h3>
   <h4>Located at: ${shopSelected.location}</h4>
   <button id="edit-shop-button">Edit ${shopSelected.name}</button>
+  <br>
   <button data-id="${shopSelected.id}" id="delete-shop-button"class="delete-button" )">Delete Shop</button>
 
   `
@@ -136,7 +137,11 @@ function deleteShopButtonMethod(event) {
 }
 
 function editShop(event, shopSelected){
+  // alert("Scroll down")
+  // const reviewsDiv = document.getElementById("reviews-div")
   const editShopForm = document.createElement('form')
+
+  // reviewsDiv.scrollTop = reviewsDiv.scrollHeight
 
   editShopForm.innerHTML = `
     <form id="edit-coffee-shop-form" action="index.html" method="post">
@@ -166,6 +171,8 @@ function editShop(event, shopSelected){
   })
 
   reviewsDiv.append(editShopForm)
+  editShopForm.scrollIntoView();
+
 
   const deleteButton = document.getElementById(`delete-button-${shopSelected.id}`)
 

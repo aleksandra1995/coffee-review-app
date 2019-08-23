@@ -1,6 +1,8 @@
 html {
   width: 100vw;
   height: 100vh;
+  /* animation: 10s ease-out 0s 1; */
+
 }
 
 h1, h2, h3, p {
@@ -9,9 +11,12 @@ h1, h2, h3, p {
 
 .app-name {
   color: #593C1F;
-  text-shadow: 1px 1px #ffffff;
+  text-shadow: 5px 5px 4px #000000;
   font-size: 1.5em;
-  font-family: arial;
+  /* font-family: arial; */
+  /* font-family: Impact, Charcoal, sans-serif; */
+  font-family: "Comic Sans MS";
+
 }
 
 /************** Start header ****************/
@@ -20,6 +25,8 @@ h1, h2, h3, p {
   text-align: center;
   font-size: 3em;
   font-weight: bold;
+  /* font-family: "Lucida Console"; */
+  font-family: "Comic Sans MS";
 }
 
 body {
@@ -67,8 +74,11 @@ header {
 
 /******************* End username-bar ***********/
 
+/******************* Main, shop-list-div, reviews-div, div-for-new-review **************/
 #main {
   margin-top: 5em;
+  margin-right: 0px;
+  /************* Flex makes the div responsive ***************/
   display: flex;
   width: 90vw;
   height: 80vh;
@@ -78,12 +88,24 @@ header {
 #shop-list-div, #reviews-div, #div-for-new-review {
   background-color: #f5f5dc;
   width: 30vw;
-  /* height: 100vh expands the height of the div to fit added contents */
   height: 100vh;
   margin: 1em;
+  /****************** Expanding to fit added contents *************/
+  /* display: table expands the height of the div to fit added contents */
   display: table;
   text-align: center;
+  border-radius: 10px;
+  border: 2px solid gray;
+  box-shadow: 5px 10px 10px white;
 }
+
+/*???????????????????? Do we want a background? */
+/* #shop-list-div {
+  background: url("beans shop list div background.jpeg");
+  height: 100%;
+  background-size: auto;
+  background-repeat: repeat;
+} */
 
 .div-for-shop-list {
   background-color: #f5f5dc;
@@ -91,14 +113,13 @@ header {
 
 .div-for-comments {
   width: 10em;
-  overflow: auto;
-  display: table;
   background-color: #f5f5dc;
 }
 
+/*************** End Main, shop-list-div, reviews-div, div-for-new-review ****************/
+
 /****************** Forms input **********************/
 input, #edit-shop-button {
-  /* width: 80%; */
   padding: 0.5em 2em;
   margin: 0.25em 0;
   box-sizing: border-box;
@@ -106,22 +127,12 @@ input, #edit-shop-button {
   border-radius: 10px;
 }
 
-input {
-  transition-timing-function: 0.4s ease-in;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.44s ease-in-out;
+input:focus, input:not([type=submit]):hover {
+  width: 60%;
 }
 
-input:focus {
-  width: 50%;
-}
-
-#username-bar:focus {
-  width: 30%;
-}
-
-input[type=text]:hover {
-  cursor: pointer;
+#username-bar:focus, #username-bar:hover {
+  width: 20%;
 }
 
 input:hover, #edit-shop-button:hover {
@@ -138,8 +149,10 @@ input:hover, #edit-shop-button:hover {
   border: 2px solid gray;
   border-radius: 25px;
   transition: all 0.5s;
-  margin-left: 70vh;
+  text-align: center;
+  box-shadow: 5px 10px 5px gray;
 }
+
 #button-for-all-reviews:hover, button:hover {
   background-color: white;
   cursor: pointer;
@@ -161,11 +174,13 @@ input:hover, #edit-shop-button:hover {
 /******************** Shop list buttons ********************/
 
 .shop-button {
-  width: inherit;
+  /* width: inherit; */
+  width: 70%;
   height: 4em;
   background-color: #d9b38c;
   font-size: 1em;
-  margin: 1vh;
+  box-shadow: 5px 10px 5px gray;
+  margin-bottom: 1.5em;
   border: 2px solid gray;
   border-radius: 25px;
   transition: all 0.5s;
@@ -176,6 +191,12 @@ input:hover, #edit-shop-button:hover {
   cursor: pointer;
 }
 
+.shop-button:hover {
+  background-color: white;
+  cursor: pointer;
+  width: 90%;
+  transition: 0.5s;
+}
 
 .shop-button span {
   display: inline-block;
@@ -203,20 +224,31 @@ input:hover, #edit-shop-button:hover {
 
 /******************** Shop list buttons end ********************/
 
+/************* Shop image, .review-card, .user-review-card *************/
+
 .shop-img {
-  max-width: 100%;
+  max-width: 99%;
   height: auto;
+  border-radius: 10px;
+  border: 2px solid black;
 }
 
-.review-card {
-  background-color: #d9b38c;
-  margin: 10px 10px 10px 10px;
-  width: 95%;
+.review-card, .user-review-card {
+  /* background-color: #d9b38c; */
+  margin: 10px 10px 20px 10px;
+  width: 90%;
   box-shadow: 5px 10px 5px #888888;
+  border-radius: 10px;
+  border: 2px solid black;
+  background: url("review card background.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
 }
 
-.user-review-card {
-  background-color: #d9b38c;
-  margin: 10px 10px 10px 10px;
-  box-shadow: 5px 10px 5px #888888;
+ul {
+  list-style: none;
+  margin-left: 0px;
+  padding: 0px;
 }
+/************* End Shop image, .review-card, .user-review-card *************/

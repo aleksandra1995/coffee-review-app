@@ -22,19 +22,6 @@ fetch('http://localhost:3000/users')
   .then(user => usersArray.push(user))
 
 
-
-// usernameBar.addEventListener('click', function (event) {
-//
-//   if (event.target.classList.contains('welcome-msg')) {
-//     console.log(event.target);
-//   const currentUserId = event.target.dataset.id
-// fetch(`http://localhost:3000/shopreview/${currentUserId}`)
-//     .then(resp => resp.json())
-//     .then(oneUserReviews => showUsersReviews(oneUserReviews, currentUserId))}
-//
-// })
-
-
 function showUsersReviews(oneUserReviews, currentUserId) {
   if (oneUserReviews === []){console.log("empty")}
   else {
@@ -90,7 +77,7 @@ function renderEditForm(event) {
 
 
     if (formDivEdit !== null){
-      alert("Scroll down")
+      // alert("Scroll down")
       return;
     }
 
@@ -108,8 +95,7 @@ function renderEditForm(event) {
     `
 
     divForNewReview.append(formToEditDiv)
-    // const editReviewForm = document.getElementById('edit-review')
-    // editReviewForm.addEventListener("submit", editReview)
+    formToEditDiv.scrollIntoView()
     divForNewReview.addEventListener("submit", editReview)
 
 
@@ -209,7 +195,9 @@ function showHomepage(username){
 
       if (userExists){
         usernameBar.innerHTML=`<p data-id="${userId}" class="welcome-msg">Start leaving reviews, ${username}!</p>
-        <button data-id="${userId}" id="button-for-all-reviews">Click here to see all of your reviews</button>`
+        <div class="add-user-form">
+        <button data-id="${userId}" id="button-for-all-reviews">Click here to see all of your reviews</button>
+        </div>`
         const buttonForAllReviews = document.getElementById('button-for-all-reviews')
         console.log(buttonForAllReviews);
         buttonForAllReviews.addEventListener('click', function (event) {

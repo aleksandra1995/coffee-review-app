@@ -24,14 +24,12 @@ addShopForm.addEventListener('submit', createNewCoffeeShop)
 function postOneShop(eachShop) {
   const divForEachShop = document.createElement('div');
 
-  // CSS button transition won't work without <span>
-  // divForEachShop.innerHTML += `<button data-id="${eachShop.id}" class="shop-button"><span>${eachShop.name}</span></button>`
-  divForEachShop.innerHTML += `<button data-id="${eachShop.id}" id="button-${eachShop.id}" class="shop-button">${eachShop.name}</button>`
+  divForEachShop.innerHTML += `<button data-id="${eachShop.id}" class="shop-button"><span data-id="${eachShop.id}">${eachShop.name}</span></button>`
   divForEachShop.setAttribute("id",`${eachShop.id}`)
 
   shopListDiv.append(divForEachShop)
 
-  divForEachShop.classList.add("div-for-shop-list", "column", "row")
+  divForEachShop.classList.add("div-for-shop-list")
 
   divForEachShop.addEventListener("click", shopClicked)
 
