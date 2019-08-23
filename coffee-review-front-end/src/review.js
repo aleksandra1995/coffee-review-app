@@ -7,14 +7,14 @@ function postIndInfoAboutShop(shopSelected) {
 
   reviewsDiv.innerHTML = `
   <img class="shop-img" src="${shopSelected.img}"/>
-  <h3>${shopSelected.name}</h3>
-  <h4>Located at: ${shopSelected.location}</h4>
+  <h3 class="shop-info">${shopSelected.name}</h3>
+  <h4  class="shop-info">Located at: ${shopSelected.location}</h4>
   <button id="edit-shop-button">Edit ${shopSelected.name}</button>
   <br>
   <button data-id="${shopSelected.id}" id="delete-shop-button"class="delete-button" )">Delete Shop</button>
 
   `
-  reviewsDiv.innerHTML += `<h3>All reviews for ${shopSelected.name}:</h3>`
+  reviewsDiv.innerHTML += `<h3  class="shop-info">All reviews for ${shopSelected.name}:</h3>`
 
   const editShopButton = document.getElementById('edit-shop-button')
   const deleteShopButton = document.getElementById('delete-shop-button')
@@ -48,7 +48,7 @@ function deleteShopButtonMethod(event) {
 
         divForNewReview.innerHTML =
         `<form id="add-review" style="">
-          <h3>Add a Review!</h3>
+          <h3 class="shop-info">Add a Review!</h3>
           <input type="text" name="title" value="" placeholder="Enter a title..." class="input-text">
           <br>
           <input type="number" name="rating" value="" placeholder="Enter a rating..." class="input-text">

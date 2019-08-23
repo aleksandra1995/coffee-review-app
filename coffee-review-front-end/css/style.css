@@ -128,6 +128,16 @@ header {
   background-color: #f5f5dc;
 }
 
+.new-coffee-shop-title {
+  color: white;
+  text-shadow: 1px 1px #000000;
+
+  /* text-shadow: black; */
+}
+.shop-info {
+  font-family: "Comic Sans MS";
+}
+
 /*************** End Main, shop-list-div, reviews-div, div-for-new-review ****************/
 
 /****************** Forms input **********************/
@@ -197,6 +207,8 @@ input:hover, #edit-shop-button:hover {
   border-radius: 25px;
   transition: all 0.5s;
   background: url("review card background.jpeg");
+  font-family: "Anton";
+
 }
 
 .shop-button:hover, button:hover {
@@ -258,6 +270,7 @@ input:hover, #edit-shop-button:hover {
   background-size: cover;
   text-align: center;
   padding-bottom: 1em;
+  font-family: "Trebuchet MS";
 }
 
 ul {

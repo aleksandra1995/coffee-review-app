@@ -26,7 +26,7 @@ function showUsersReviews(oneUserReviews, currentUserId) {
   if (oneUserReviews === []){console.log("empty")}
   else {
     const hereAreTheReviewsTag = document.createElement('h2')
-
+    hereAreTheReviewsTag.classList.add('shop-info')
     hereAreTheReviewsTag.innerText = "Here is a list of your reviews!"
     divForNewReview.append(hereAreTheReviewsTag)
 
