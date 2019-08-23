@@ -84,6 +84,17 @@ header {
   height: 80vh;
 }
 
+#shop-list-div {
+ background: url("beans shop list div background.jpeg");
+ /* height: 100%; */
+ background-size: 100%;
+ max-height: 100%;
+ background-repeat: repeat;
+ display: flex;
+ display: table;
+ height: 100vh;
+}
+
 /* change to class */
 #shop-list-div, #reviews-div, #div-for-new-review {
   background-color: #f5f5dc;
@@ -106,6 +117,7 @@ header {
   background-size: auto;
   background-repeat: repeat;
 } */
+
 
 .div-for-shop-list {
   background-color: #f5f5dc;
@@ -184,6 +196,7 @@ input:hover, #edit-shop-button:hover {
   border: 2px solid gray;
   border-radius: 25px;
   transition: all 0.5s;
+  background: url("review card background.jpeg");
 }
 
 .shop-button:hover, button:hover {
@@ -244,6 +257,7 @@ input:hover, #edit-shop-button:hover {
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
+  padding-bottom: 1em;
 }
 
 ul {
