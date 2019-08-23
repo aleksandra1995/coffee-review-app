@@ -11,7 +11,7 @@ h1, h2, h3, h4, p {
 }
 
 .app-name {
-  color: #593C1F;
+  color: #f2dfd0;
   text-shadow: 5px 5px 4px #000000;
   font-size: 1.5em;
   font-family: "Comic Sans MS";
@@ -84,7 +84,6 @@ header {
 
 #shop-list-div {
  background: url("beans shop list div background.jpeg");
- /* height: 100%; */
  background-size: 100%;
  max-height: 100%;
  background-repeat: repeat;
@@ -182,7 +181,6 @@ input:hover, #edit-shop-button:hover {
 }
 
 #button-for-all-reviews span:after {
-  /* content: '\00bb'; */
   content: '👀';
   position: absolute;
   opacity: 0;
@@ -218,7 +216,6 @@ input:hover, #edit-shop-button:hover {
 /******************** Shop list buttons ********************/
 
 .shop-button {
-  /* width: inherit; */
   width: 70%;
   height: 4em;
   background-color: #d9b38c;
