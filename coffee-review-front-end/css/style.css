@@ -5,16 +5,15 @@ html {
 
 }
 
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
   text-shadow: 1px 1px #ffffff;
+  cursor: default;
 }
 
 .app-name {
   color: #593C1F;
   text-shadow: 5px 5px 4px #000000;
   font-size: 1.5em;
-  /* font-family: arial; */
-  /* font-family: Impact, Charcoal, sans-serif; */
   font-family: "Comic Sans MS";
 
 }
@@ -25,7 +24,6 @@ h1, h2, h3, p {
   text-align: center;
   font-size: 3em;
   font-weight: bold;
-  /* font-family: "Lucida Console"; */
   font-family: "Comic Sans MS";
 }
 
@@ -110,15 +108,6 @@ header {
   box-shadow: 5px 10px 10px white;
 }
 
-/*???????????????????? Do we want a background? */
-/* #shop-list-div {
-  background: url("beans shop list div background.jpeg");
-  height: 100%;
-  background-size: auto;
-  background-repeat: repeat;
-} */
-
-
 .div-for-shop-list {
   background-color: #f5f5dc;
 }
@@ -131,9 +120,8 @@ header {
 .new-coffee-shop-title {
   color: white;
   text-shadow: 1px 1px #000000;
-
-  /* text-shadow: black; */
 }
+
 .shop-info {
   font-family: "Comic Sans MS";
 }
@@ -162,6 +150,8 @@ input:hover, #edit-shop-button:hover {
 }
 
 /****************** Forms input end ***********************/
+
+/******************* Review and Shop buttons ************************/
 #button-for-all-reviews {
   width: 30%;
   height: 4em;
@@ -173,11 +163,41 @@ input:hover, #edit-shop-button:hover {
   transition: all 0.5s;
   text-align: center;
   box-shadow: 5px 10px 5px gray;
+  background: url("paper background.jpeg");
+  font-family: "Anton";
 }
 
 #button-for-all-reviews:hover, button:hover {
   background-color: white;
   cursor: pointer;
+  width: 40%;
+  transition: 0.5s;
+}
+
+
+#button-for-all-reviews span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#button-for-all-reviews span:after {
+  /* content: '\00bb'; */
+  content: '👀';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#button-for-all-reviews span {
+  padding-right: 25px;
+}
+
+#button-for-all-reviews:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 .delete-button, .edit-button, #edit-shop-button, .submit, input {
@@ -193,6 +213,8 @@ input:hover, #edit-shop-button:hover {
   background-color: #d9b38c;
 }
 
+/************* Review and Shop buttons *******************/
+
 /******************** Shop list buttons ********************/
 
 .shop-button {
@@ -206,7 +228,7 @@ input:hover, #edit-shop-button:hover {
   border: 2px solid gray;
   border-radius: 25px;
   transition: all 0.5s;
-  background: url("review card background.jpeg");
+  background: url("paper background.jpeg");
   font-family: "Anton";
 
 }
@@ -230,7 +252,7 @@ input:hover, #edit-shop-button:hover {
 }
 
 .shop-button span:after {
-  content: '\00bb';
+  content: '☕️';
   position: absolute;
   opacity: 0;
   top: 0;
@@ -259,18 +281,24 @@ input:hover, #edit-shop-button:hover {
 }
 
 .review-card, .user-review-card {
-  /* background-color: #d9b38c; */
   margin: 10px 10px 20px 10px;
   width: 90%;
   box-shadow: 5px 10px 5px #888888;
   border-radius: 10px;
   border: 2px solid black;
-  background: url("review card background.jpeg");
+  background: url("paper background.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
   padding-bottom: 1em;
   font-family: "Trebuchet MS";
+}
+
+.review-card:hover, .user-review-card:hover {
+  transform: rotate(2deg);
+  transform-origin: center;
+  transition: 0.1s;
+  cursor: default;
 }
 
 ul {

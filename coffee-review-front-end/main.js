@@ -196,15 +196,15 @@ function showHomepage(username){
       if (userExists){
         usernameBar.innerHTML=`<p data-id="${userId}" class="welcome-msg">Start leaving reviews, ${username}!</p>
         <div class="add-user-form">
-        <button data-id="${userId}" id="button-for-all-reviews">Click here to see all of your reviews</button>
+        <button data-id="${userId}" id="button-for-all-reviews"><span data-id="${userId}">Click here to see all of your reviews</span></button>
         </div>`
         const buttonForAllReviews = document.getElementById('button-for-all-reviews')
         console.log(buttonForAllReviews);
         buttonForAllReviews.addEventListener('click', function (event) {
 
 
-            console.log(event.target);
-          const currentUserId = event.target.dataset.id
+        console.log(event.target);
+        const currentUserId = event.target.dataset.id
         fetch(`http://localhost:3000/shopreview/${currentUserId}`)
             .then(resp => resp.json())
             .then(oneUserReviews => showUsersReviews(oneUserReviews, currentUserId))
