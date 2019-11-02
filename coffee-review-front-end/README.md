@@ -4,5 +4,3 @@ Backend:
 https://github.com/aleksandra1995/coffee-review-app/tree/master/coffee-reviews-backend/mod-3-project-coffee-reviews
 
 Make sure that the backend server is up and running.
-
-![](http://gph.is/18Y0uxF)
