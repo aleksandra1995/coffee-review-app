@@ -1,0 +1,306 @@
+html {
+  width: 100vw;
+  height: 100vh;
+  /* animation: 10s ease-out 0s 1; */
+
+}
+
+h1, h2, h3, h4, p {
+  text-shadow: 1px 1px #ffffff;
+  cursor: default;
+}
+
+.app-name {
+  color: #f2dfd0;
+  text-shadow: 5px 5px 4px #000000;
+  font-size: 1.5em;
+  font-family: "Comic Sans MS";
+
+}
+
+/************** Start header ****************/
+
+.welcome-msg {
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: "Comic Sans MS";
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-image: url("coffee beans background image.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+header {
+  background-color: #7a5a00;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  border: 0 0 1em 0;
+  opacity: 0.9;
+}
+
+#JAVA-logo {
+  width: 10%;
+  display: inline-block;
+  width: 5em;
+  height: auto;
+  align: left;
+  margin: 0;
+}
+
+/********************* End header ****************/
+
+/********************* Start username-bar ************/
+.username-bar {
+  width: 100%;
+  margin-top: 5em;
+}
+
+.add-user-form {
+  text-align: center;
+}
+
+/******************* End username-bar ***********/
+
+/******************* Main, shop-list-div, reviews-div, div-for-new-review **************/
+#main {
+  margin-top: 5em;
+  margin-right: 0px;
+  /************* Flex makes the div responsive ***************/
+  display: flex;
+  width: 90vw;
+  height: 80vh;
+}
+
+#shop-list-div {
+ background: url("beans shop list div background.jpeg");
+ background-size: 100%;
+ max-height: 100%;
+ background-repeat: repeat;
+ display: flex;
+ display: table;
+ height: 100vh;
+}
+
+/* change to class */
+#shop-list-div, #reviews-div, #div-for-new-review {
+  background-color: #f5f5dc;
+  width: 30vw;
+  height: 100vh;
+  margin: 1em;
+  /****************** Expanding to fit added contents *************/
+  /* display: table expands the height of the div to fit added contents */
+  display: table;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid gray;
+  box-shadow: 5px 10px 10px white;
+}
+
+.div-for-shop-list {
+  background-color: #f5f5dc;
+}
+
+.div-for-comments {
+  width: 10em;
+  background-color: #f5f5dc;
+}
+
+.new-coffee-shop-title {
+  color: white;
+  text-shadow: 1px 1px #000000;
+}
+
+.shop-info {
+  font-family: "Comic Sans MS";
+}
+
+/*************** End Main, shop-list-div, reviews-div, div-for-new-review ****************/
+
+/****************** Forms input **********************/
+input, #edit-shop-button {
+  padding: 0.5em 2em;
+  margin: 0.25em 0;
+  box-sizing: border-box;
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+
+input:focus, input:not([type=submit]):hover {
+  width: 60%;
+}
+
+#username-bar:focus, #username-bar:hover {
+  width: 20%;
+}
+
+input:hover, #edit-shop-button:hover {
+  cursor: pointer;
+}
+
+/****************** Forms input end ***********************/
+
+/******************* Review and Shop buttons ************************/
+#button-for-all-reviews {
+  width: 30%;
+  height: 4em;
+  background-color: #d9b38c;
+  font-size: 1em;
+  margin: 1vh;
+  border: 2px solid gray;
+  border-radius: 25px;
+  transition: all 0.5s;
+  text-align: center;
+  box-shadow: 5px 10px 5px gray;
+  background: url("paper background.jpeg");
+  font-family: "Anton";
+}
+
+#button-for-all-reviews:hover, button:hover {
+  background-color: white;
+  cursor: pointer;
+  width: 40%;
+  transition: 0.5s;
+}
+
+
+#button-for-all-reviews span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#button-for-all-reviews span:after {
+  content: '👀';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#button-for-all-reviews span {
+  padding-right: 25px;
+}
+
+#button-for-all-reviews:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.delete-button, .edit-button, #edit-shop-button, .submit, input {
+  padding: 0.5em 2em;
+  margin: 0.25em 0;
+  box-sizing: border-box;
+  border: 2px solid gray;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+.delete-button:hover, .edit-button:hover, #edit-shop-button:hover, .submit:hover, input:hover {
+  background-color: #d9b38c;
+}
+
+/************* Review and Shop buttons *******************/
+
+/******************** Shop list buttons ********************/
+
+.shop-button {
+  width: 70%;
+  height: 4em;
+  background-color: #d9b38c;
+  font-size: 1em;
+  box-shadow: 5px 10px 5px gray;
+  margin-bottom: 1.5em;
+  border: 2px solid gray;
+  border-radius: 25px;
+  transition: all 0.5s;
+  background: url("paper background.jpeg");
+  font-family: "Anton";
+
+}
+
+.shop-button:hover, button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.shop-button:hover {
+  background-color: white;
+  cursor: pointer;
+  width: 90%;
+  transition: 0.5s;
+}
+
+.shop-button span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.shop-button span:after {
+  content: '☕️';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.shop-button:hover span {
+  padding-right: 25px;
+}
+
+.shop-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/******************** Shop list buttons end ********************/
+
+/************* Shop image, .review-card, .user-review-card *************/
+
+.shop-img {
+  max-width: 99%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.review-card, .user-review-card {
+  margin: 10px 10px 20px 10px;
+  width: 90%;
+  box-shadow: 5px 10px 5px #888888;
+  border-radius: 10px;
+  border: 2px solid black;
+  background: url("paper background.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  padding-bottom: 1em;
+  font-family: "Trebuchet MS";
+}
+
+.review-card:hover, .user-review-card:hover {
+  transform: rotate(2deg);
+  transform-origin: center;
+  transition: 0.1s;
+  cursor: default;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0px;
+  padding: 0px;
+}
+/************* End Shop image, .review-card, .user-review-card *************/
