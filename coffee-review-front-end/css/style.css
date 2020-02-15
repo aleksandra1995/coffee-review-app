@@ -25,6 +25,9 @@ h1, h2, h3, h4, p {
   font-size: 3em;
   font-weight: bold;
   font-family: "Comic Sans MS";
+  -webkit-text-stroke: 3px black;
+  color: white;
+  /* text-shadow: 5px 5px 4px black; */
 }
 
 body {
@@ -38,7 +41,8 @@ body {
 }
 
 header {
-  background-color: #7a5a00;
+  /* background-color: #7a5a00; */
+  background-image: url("banner background.jpg");
   padding: 0.5em 0.5em 0.5em 0.5em;
   text-align: center;
   position: fixed;
@@ -47,6 +51,14 @@ header {
   margin: 0;
   border: 0 0 1em 0;
   opacity: 0.9;
+  background-position: 0% 80%;
+  border-bottom: 2px solid gray;
+  box-shadow: 5px 10px 10px white;
+}
+
+.banner-background{
+  left: 0px;
+  clip: rect(0px,100%,200px,0px);
 }
 
 #JAVA-logo {
@@ -108,7 +120,7 @@ header {
 }
 
 .div-for-shop-list {
-  background-color: #f5f5dc;
+  /* background-color: #f5f5dc; */
 }
 
 .div-for-comments {
@@ -227,6 +239,8 @@ input:hover, #edit-shop-button:hover {
   transition: all 0.5s;
   background: url("paper background.jpeg");
   font-family: "Anton";
+  /* color: #d9b38c;
+  -webkit-text-stroke: 1px black; */
 
 }
 
@@ -289,12 +303,17 @@ input:hover, #edit-shop-button:hover {
   text-align: center;
   padding-bottom: 1em;
   font-family: "Trebuchet MS";
+  /* transform: rotateY(45deg); */
+  /* perspective: 1000px;
+  transform-style: preserve-3d; */
 }
 
 .review-card:hover, .user-review-card:hover {
   transform: rotate(2deg);
+  /* transform: rotateY(0deg); */
+  /* transform: rotate3d(1, 1, 1, 0deg); */
   transform-origin: center;
-  transition: 0.1s;
+  transition: 0.5s;
   cursor: default;
 }
 
@@ -304,3 +323,20 @@ ul {
   padding: 0px;
 }
 /************* End Shop image, .review-card, .user-review-card *************/
+
+.welcome-msg {
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: "Comic Sans MS";
+  -webkit-text-stroke: 3px black;
+  color: white;
+  /* text-shadow: none; */
+  text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+  /* text-shadow: 5px 5px 4px black; */
+}
